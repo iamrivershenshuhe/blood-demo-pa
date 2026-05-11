@@ -1,0 +1,3112 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blood Foundation SOP · Proposal Showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,30..100;1,9..144,300..600,30..100&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #1f1f1e;
+    --surface: #2a2a28;
+    --surface-2: #323230;
+    --surface-3: #3a3a37;
+    --border: rgba(240,233,214,0.07);
+    --border-2: rgba(240,233,214,0.13);
+    --border-3: rgba(240,233,214,0.22);
+    --text: #F0E9D6;
+    --text-2: #B3AC9A;
+    --text-3: #807A6C;
+    --text-4: #4F4B43;
+    --accent: #D77757;
+    --accent-2: #E69277;
+    --accent-bg: rgba(215,119,87,0.10);
+    --accent-border: rgba(215,119,87,0.32);
+    --warn-bg: rgba(217,176,86,0.10);
+    --warn-text: #D9B056;
+    --warn-border: rgba(217,176,86,0.30);
+    --info-bg: rgba(135,171,205,0.08);
+    --info-text: #A8C0D5;
+    --info-border: rgba(135,171,205,0.24);
+    --success: #87AB6E;
+
+    --serif-en: 'Fraunces', 'Noto Serif TC', Georgia, serif;
+    --serif-tc: 'Noto Serif TC', 'Fraunces', Georgia, serif;
+    --sans-tc: 'Noto Sans TC', 'PingFang TC', sans-serif;
+  }
+
+  html, body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans-tc);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "tnum" 1;
+  }
+  body { min-height: 100vh; position: relative; overflow-x: hidden; }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 0.95 0 0 0 0 0.85 0 0 0 0.4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 100;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.35) 100%);
+    pointer-events: none;
+    z-index: 99;
+  }
+
+  .container { max-width: 920px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 2; }
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ============== Header ============== */
+  .site-header {
+    border-bottom: 0.5px solid var(--border);
+    padding: 22px 0;
+  }
+  .site-header-inner {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand-glyph {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 24px;
+    font-weight: 500;
+    font-variation-settings: "opsz" 72, "SOFT" 100;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .brand-text {
+    font-size: 12px;
+    color: var(--text-2);
+    letter-spacing: 0.04em;
+    padding-left: 14px;
+    border-left: 0.5px solid var(--border-2);
+  }
+  .brand-text em {
+    font-family: var(--serif-en);
+    font-style: italic;
+    color: var(--text);
+    font-size: 13px;
+    font-variation-settings: "opsz" 14, "SOFT" 50;
+  }
+  .site-meta {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--text-3);
+    letter-spacing: 0.06em;
+    font-variation-settings: "opsz" 14, "SOFT" 50;
+  }
+
+  /* ============== Reveal ============== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+  /* ============== Hero ============== */
+  .hero { padding: 88px 0 60px; }
+  .hero-eyebrow {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--text-2);
+    letter-spacing: 0.08em;
+    margin-bottom: 32px;
+    font-variation-settings: "opsz" 14, "SOFT" 50;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 28px; height: 0.5px; background: var(--accent);
+  }
+  .hero h1 {
+    font-family: var(--serif-tc);
+    font-weight: 500;
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.32;
+    letter-spacing: -0.005em;
+    margin-bottom: 26px;
+    max-width: 780px;
+  }
+  .hero h1 em {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    font-size: 1.04em;
+    padding: 0 0.06em;
+  }
+  .hero-sub {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--text-2);
+    max-width: 600px;
+    margin-bottom: 38px;
+    font-variation-settings: "opsz" 20, "SOFT" 60;
+    letter-spacing: 0.005em;
+  }
+
+  .hero-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 0.5px solid var(--border-2);
+    border-bottom: 0.5px solid var(--border-2);
+    padding: 18px 0;
+  }
+  .hero-meta-item {
+    padding: 0 22px 0 0;
+    border-right: 0.5px solid var(--border);
+  }
+  .hero-meta-item:not(:first-child) { padding-left: 22px; }
+  .hero-meta-item:last-child { border-right: none; }
+  .hero-meta-label {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 11px;
+    color: var(--text-3);
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+    font-variation-settings: "opsz" 12, "SOFT" 50;
+  }
+  .hero-meta-value { font-size: 13.5px; color: var(--text); font-weight: 500; }
+
+  /* ============== Section ============== */
+  .catalog-section { padding: 56px 0 16px; }
+  .section-mark {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 22px;
+  }
+  .section-num {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 0.9;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    letter-spacing: -0.04em;
+  }
+  .section-num .slash { color: var(--text-4); font-size: 0.7em; }
+  .section-line { height: 0.5px; background: var(--border-2); }
+  .section-name-wrap { text-align: right; }
+  .section-name {
+    font-family: var(--serif-tc);
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+  .section-sub {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--text-3);
+    font-variation-settings: "opsz" 12, "SOFT" 60;
+    letter-spacing: 0.02em;
+  }
+
+  /* ============== Card Grid ============== */
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .card {
+    background: var(--surface);
+    border: 0.5px solid var(--border-2);
+    border-radius: 4px;
+    padding: 24px 26px 22px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    min-height: 230px;
+    position: relative;
+    transition: border-color 0.35s ease, background 0.35s ease;
+    overflow: hidden;
+  }
+  .card:hover:not(.disabled) {
+    border-color: var(--border-3);
+    background: var(--surface-2);
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(215,119,87,0.04) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  .card:hover:not(.disabled)::before { opacity: 1; }
+  .card.disabled { cursor: default; }
+
+  .card-head {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 18px;
+  }
+  .card-num {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--accent);
+    font-variation-settings: "opsz" 72, "SOFT" 100;
+    letter-spacing: -0.03em;
+  }
+  .card.disabled .card-num { color: var(--text-4); }
+
+  .card-arrow {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 0.5px solid var(--border-2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-3);
+    font-size: 14px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    line-height: 1;
+  }
+  .card:hover:not(.disabled) .card-arrow {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: rotate(-45deg);
+  }
+  .card.disabled .card-arrow { color: var(--text-4); }
+
+  .card-title {
+    font-family: var(--serif-tc);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.45;
+    margin-bottom: 10px;
+    letter-spacing: -0.005em;
+  }
+  .card.disabled .card-title { color: var(--text-2); }
+
+  .card-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-2);
+    flex: 1;
+  }
+  .card.disabled .card-desc { color: var(--text-3); }
+
+  .card-foot {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 0.5px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 12px;
+  }
+  .card-kicker {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 11.5px;
+    color: var(--text-3);
+    letter-spacing: 0.02em;
+    font-variation-settings: "opsz" 12, "SOFT" 60;
+  }
+  .card-kicker::before {
+    content: '— ';
+    color: var(--text-4);
+  }
+  .card-tags { display: flex; gap: 6px; }
+  .tag {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 10.5px;
+    letter-spacing: 0.04em;
+    padding: 2px 9px;
+    border: 0.5px solid var(--border-2);
+    border-radius: 100px;
+    color: var(--text-2);
+    background: transparent;
+    font-variation-settings: "opsz" 12, "SOFT" 60;
+  }
+  .tag.tag-accent {
+    border-color: var(--accent-border);
+    color: var(--accent);
+    background: var(--accent-bg);
+  }
+  .tag.tag-muted { color: var(--text-4); border-color: var(--border); }
+
+  /* ============== Footer ============== */
+  .site-footer {
+    margin-top: 100px;
+    padding: 36px 0 44px;
+    border-top: 0.5px solid var(--border-2);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: end;
+  }
+  .footer-note {
+    font-size: 12px;
+    color: var(--text-3);
+    line-height: 1.8;
+    max-width: 560px;
+    font-style: italic;
+    font-family: var(--serif-en);
+    font-variation-settings: "opsz" 14, "SOFT" 60;
+  }
+  .footer-note em {
+    font-style: normal;
+    color: var(--text-2);
+    font-family: var(--sans-tc);
+  }
+  .footer-meta {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 11.5px;
+    color: var(--text-3);
+    letter-spacing: 0.05em;
+    text-align: right;
+    line-height: 1.8;
+    font-variation-settings: "opsz" 14, "SOFT" 60;
+  }
+  .footer-meta strong { color: var(--text-2); font-weight: 400; }
+
+  /* ============== Demo page ============== */
+  .demo-page { padding: 32px 0 64px; }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--text-2);
+    text-decoration: none;
+    padding: 6px 14px 6px 10px;
+    border: 0.5px solid var(--border-2);
+    border-radius: 100px;
+    margin-bottom: 36px;
+    transition: all 0.3s ease;
+    font-variation-settings: "opsz" 14, "SOFT" 60;
+  }
+  .back-link:hover { color: var(--accent); border-color: var(--accent-border); }
+  .back-link::before { content: '←'; font-style: normal; }
+
+  .demo-header { margin-bottom: 32px; }
+  .demo-num {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    font-variation-settings: "opsz" 14, "SOFT" 50;
+  }
+  .demo-title {
+    font-family: var(--serif-tc);
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    max-width: 720px;
+    letter-spacing: -0.01em;
+  }
+  .demo-intro {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--text-2);
+    line-height: 1.7;
+    max-width: 640px;
+    font-variation-settings: "opsz" 20, "SOFT" 60;
+  }
+  .demo-intro em {
+    font-style: normal;
+    color: var(--text);
+    font-family: var(--sans-tc);
+    font-size: 14.5px;
+    display: block;
+    margin-top: 8px;
+  }
+
+  /* ============== Stage ============== */
+  .demo-stage {
+    background: var(--surface);
+    border: 0.5px solid var(--border-2);
+    border-radius: 4px;
+    padding: 24px 26px;
+    margin-bottom: 18px;
+  }
+  .stage-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    margin-bottom: 22px;
+    border-bottom: 0.5px solid var(--border);
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--text-3);
+    font-variation-settings: "opsz" 12, "SOFT" 60;
+  }
+  .stage-bar-status {
+    display: flex; align-items: center; gap: 8px;
+    font-style: normal;
+    font-family: var(--sans-tc);
+  }
+  .stage-bar-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--success);
+    box-shadow: 0 0 8px rgba(135,171,110,0.5);
+  }
+
+  /* Scenario picker */
+  .scenario-picker { padding: 4px 0 10px; }
+  .scenario-prompt {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 14.5px;
+    color: var(--text-2);
+    margin-bottom: 18px;
+    font-variation-settings: "opsz" 18, "SOFT" 60;
+  }
+  .scenario-options { display: flex; flex-direction: column; gap: 8px; }
+  .scenario-option {
+    display: grid;
+    grid-template-columns: 40px 1fr 24px;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 18px;
+    background: var(--surface-2);
+    border: 0.5px solid var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: left;
+    color: var(--text);
+    font: inherit;
+    font-size: 14px;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+  }
+  .scenario-option:hover {
+    border-color: var(--accent-border);
+    background: var(--surface-3);
+  }
+  .scenario-option-num {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--accent);
+    font-variation-settings: "opsz" 36, "SOFT" 100;
+  }
+  .scenario-option-arrow {
+    color: var(--text-3);
+    font-size: 14px;
+    transition: transform 0.3s ease;
+  }
+  .scenario-option:hover .scenario-option-arrow {
+    transform: translateX(3px);
+    color: var(--accent);
+  }
+
+  /* Messages */
+  .msg-stream { display: flex; flex-direction: column; gap: 18px; padding-bottom: 4px; }
+  .msg { animation: fadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1); }
+  .msg-user { display: flex; justify-content: flex-end; }
+  .msg-user-bubble {
+    max-width: 76%;
+    padding: 11px 16px;
+    background: var(--info-bg);
+    color: var(--info-text);
+    border: 0.5px solid var(--info-border);
+    border-radius: 14px 14px 4px 14px;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+  .msg-ai {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .msg-ai-icon {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--accent-bg);
+    border: 0.5px solid var(--accent-border);
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+  .msg-ai-icon::after {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .msg-ai-body {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--text);
+    min-width: 0;
+  }
+  .msg-ai-body p { margin-bottom: 9px; }
+  .msg-ai-body p:last-child { margin-bottom: 0; }
+  .msg-ai-body strong { font-weight: 500; }
+  .msg-ai-body ul { padding-left: 20px; margin: 8px 0; list-style: none; }
+  .msg-ai-body ul li { position: relative; margin-bottom: 5px; }
+  .msg-ai-body ul li::before {
+    content: '·';
+    position: absolute;
+    left: -12px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* Chips */
+  .chips-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .chip {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    padding: 3px 10px;
+    background: var(--surface-2);
+    color: var(--text-2);
+    border: 0.5px solid var(--border);
+    border-radius: 100px;
+    font-variation-settings: "opsz" 12, "SOFT" 60;
+  }
+
+  /* Guided */
+  .guided-card {
+    background: var(--surface-2);
+    border: 0.5px solid var(--border-2);
+    border-radius: 4px;
+    padding: 18px 20px;
+    margin-top: 4px;
+  }
+  .guided-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 12px;
+  }
+  .guided-step-title {
+    font-family: var(--serif-tc);
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .guided-step-progress {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--text-3);
+    letter-spacing: 0.08em;
+    font-variation-settings: "opsz" 14, "SOFT" 60;
+  }
+  .progress-bar {
+    height: 1.5px;
+    background: var(--surface-3);
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .guided-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 18px;
+  }
+  .guided-field-label {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 11.5px;
+    color: var(--text-3);
+    margin-bottom: 5px;
+    font-variation-settings: "opsz" 12, "SOFT" 60;
+  }
+  .guided-field-value {
+    background: var(--bg);
+    border: 0.5px solid var(--border);
+    border-radius: 3px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: var(--text);
+  }
+  .guided-field-value.editable {
+    background: var(--surface-3);
+    border-color: var(--border-2);
+  }
+  .guided-foot {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 0.5px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .citation-inline {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 11.5px;
+    color: var(--text-3);
+    letter-spacing: 0.02em;
+    font-variation-settings: "opsz" 12, "SOFT" 60;
+  }
+  .citation-inline::before {
+    content: '§ ';
+    color: var(--accent);
+    font-style: normal;
+  }
+
+  /* Button */
+  .btn {
+    font-family: var(--sans-tc);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 18px;
+    background: var(--accent);
+    color: var(--bg);
+    border: 0.5px solid var(--accent);
+    border-radius: 3px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: all 0.3s ease;
+  }
+  .btn:hover { background: var(--accent-2); border-color: var(--accent-2); }
+  .btn:disabled {
+    background: var(--surface-3);
+    border-color: var(--border);
+    color: var(--text-3);
+    cursor: default;
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-2);
+    border-color: var(--border-2);
+  }
+  .btn-secondary:hover {
+    background: var(--surface-2);
+    color: var(--text);
+    border-color: var(--border-3);
+  }
+
+  /* Verdict */
+  .verdict {
+    background: var(--warn-bg);
+    border: 0.5px solid var(--warn-border);
+    border-left: 2px solid var(--warn-text);
+    padding: 14px 18px;
+    margin-top: 4px;
+  }
+  .verdict.success {
+    background: rgba(135,171,110,0.08);
+    border-color: rgba(135,171,110,0.25);
+    border-left-color: var(--success);
+  }
+  .verdict-title {
+    font-family: var(--serif-tc);
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--warn-text);
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .verdict.success .verdict-title { color: var(--success); }
+  .verdict-body {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--text);
+  }
+
+  /* Record */
+  .record-card {
+    background: var(--surface-2);
+    border: 0.5px solid var(--border);
+    padding: 16px 18px;
+    margin-top: 4px;
+  }
+  .record-title {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 12px;
+    font-variation-settings: "opsz" 12, "SOFT" 60;
+  }
+  .record-list {
+    list-style: none;
+    font-size: 13px;
+    line-height: 2.05;
+    color: var(--text-2);
+  }
+  .record-list li {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 14px;
+  }
+  .record-list li strong { color: var(--text); font-weight: 500; }
+
+  /* Citations */
+  .citations {
+    margin-top: 4px;
+    border: 0.5px solid var(--border);
+    overflow: hidden;
+  }
+  .citations-head {
+    background: var(--surface-2);
+    padding: 11px 14px;
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 12.5px;
+    color: var(--text-2);
+    cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    user-select: none;
+    font-variation-settings: "opsz" 14, "SOFT" 60;
+    transition: color 0.2s;
+  }
+  .citations-head:hover { color: var(--text); }
+  .citations-head .toggle {
+    font-size: 11px;
+    color: var(--text-3);
+    transition: transform 0.3s;
+    font-style: normal;
+  }
+  .citations.open .citations-head .toggle { transform: rotate(180deg); }
+  .citations-body {
+    padding: 4px 14px 8px;
+    background: var(--surface);
+    font-size: 12.5px;
+    color: var(--text-2);
+    display: none;
+  }
+  .citations.open .citations-body { display: block; }
+  .cite-row { padding: 12px 0; border-bottom: 0.5px solid var(--border); }
+  .cite-row:last-child { border-bottom: none; }
+  .cite-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 6px;
+    gap: 10px;
+  }
+  .cite-doc {
+    font-family: var(--serif-tc);
+    color: var(--text);
+    font-weight: 500;
+    font-size: 13px;
+  }
+  .cite-meta {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 11px;
+    color: var(--text-3);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    font-variation-settings: "opsz" 12, "SOFT" 60;
+  }
+  .cite-snippet {
+    color: var(--text-2);
+    font-size: 12px;
+    line-height: 1.75;
+    padding-left: 12px;
+    border-left: 1px solid var(--accent-border);
+    margin-top: 6px;
+    font-style: italic;
+    font-family: var(--serif-en);
+    font-variation-settings: "opsz" 14, "SOFT" 60;
+  }
+
+  /* Follow-ups */
+  .follow-ups { margin-top: 14px; }
+  .follow-ups-label {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 8px;
+    font-variation-settings: "opsz" 12, "SOFT" 60;
+  }
+  .follow-up {
+    width: 100%;
+    text-align: left;
+    background: var(--surface-2);
+    border: 0.5px solid var(--border);
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--text);
+    cursor: pointer;
+    margin-bottom: 6px;
+    display: flex; justify-content: space-between; align-items: center;
+    font: inherit;
+    transition: all 0.3s ease;
+  }
+  .follow-up:hover {
+    border-color: var(--accent-border);
+    background: var(--surface-3);
+  }
+  .follow-up-arrow {
+    color: var(--text-3);
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+  .follow-up:hover .follow-up-arrow {
+    color: var(--accent);
+    transform: translateX(3px);
+  }
+
+  /* Demo control */
+  .demo-control {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 0;
+  }
+  .demo-control-meta {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--text-3);
+    letter-spacing: 0.08em;
+    font-variation-settings: "opsz" 14, "SOFT" 60;
+  }
+
+  /* Aside */
+  .demo-aside {
+    margin-top: 36px;
+    padding: 22px 26px;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-left: 2px solid var(--accent);
+  }
+  .demo-aside-label {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+    font-variation-settings: "opsz" 12, "SOFT" 60;
+  }
+  .demo-aside-title {
+    font-family: var(--serif-tc);
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    letter-spacing: -0.005em;
+  }
+  .demo-aside-body {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.8;
+  }
+  .demo-aside-body p { margin-bottom: 8px; }
+  .demo-aside-body p:last-child { margin-bottom: 0; }
+
+  /* ============== B1: 範圍外退讓 ============== */
+  .scope-result {
+    margin-top: 4px;
+  }
+  .scope-result.in {
+    /* normal answer treatment, no special styling needed */
+  }
+  .scope-result.out {
+    background: var(--surface-2);
+    border: 0.5px solid var(--border);
+    border-left: 2px solid var(--text-3);
+    padding: 14px 18px;
+  }
+  .scope-result.out .scope-title {
+    font-family: var(--serif-tc);
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--text-2);
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .scope-result.out .scope-list {
+    list-style: none;
+    margin: 8px 0;
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.9;
+  }
+  .scope-result.out .scope-list li {
+    padding-left: 14px;
+    position: relative;
+  }
+  .scope-result.out .scope-list li::before {
+    content: '·';
+    position: absolute; left: 4px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .scope-no-cite {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: rgba(0,0,0,0.2);
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 11.5px;
+    color: var(--text-3);
+    border-radius: 2px;
+    display: inline-block;
+    font-variation-settings: "opsz" 14, "SOFT" 60;
+  }
+  .scope-no-cite::before {
+    content: '⊘ ';
+    color: var(--text-3);
+    font-style: normal;
+  }
+
+  /* ============== B2: 內容保護 sandbox ============== */
+  .sandbox {
+    background: var(--surface);
+    border: 0.5px solid var(--border-2);
+    border-radius: 4px;
+    margin-bottom: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .sandbox-head {
+    padding: 14px 22px;
+    border-bottom: 0.5px solid var(--border);
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--text-3);
+    letter-spacing: 0.08em;
+    display: flex; justify-content: space-between; align-items: center;
+    font-variation-settings: "opsz" 12, "SOFT" 60;
+  }
+  .sandbox-watermark {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(-22deg);
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 38px;
+    color: rgba(240,233,214,0.045);
+    pointer-events: none;
+    z-index: 1;
+    white-space: nowrap;
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    letter-spacing: 0.05em;
+  }
+  .sandbox-body {
+    padding: 24px 22px;
+    position: relative;
+    z-index: 2;
+    user-select: text;
+  }
+  .sandbox-body[data-protected="true"] {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .sandbox-doc-title {
+    font-family: var(--serif-tc);
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+  .sandbox-doc-meta {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 11.5px;
+    color: var(--text-3);
+    margin-bottom: 14px;
+    font-variation-settings: "opsz" 12, "SOFT" 60;
+  }
+  .sandbox-doc-content {
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.85;
+  }
+  .sandbox-doc-content p { margin-bottom: 8px; }
+  .sandbox-doc-content strong { font-weight: 500; }
+  .sandbox-doc-content ul {
+    padding-left: 22px;
+    margin: 6px 0;
+    list-style: none;
+  }
+  .sandbox-doc-content ul li {
+    position: relative;
+    margin-bottom: 4px;
+  }
+  .sandbox-doc-content ul li::before {
+    content: '·';
+    position: absolute; left: -14px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .sandbox-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 14px 18px;
+    border-top: 0.5px solid var(--border);
+    background: var(--surface-2);
+  }
+  .sandbox-action {
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--text-2);
+    background: transparent;
+    border: 0.5px solid var(--border-2);
+    border-radius: 3px;
+    padding: 9px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .sandbox-action:hover {
+    border-color: var(--accent-border);
+    color: var(--text);
+    background: var(--surface-3);
+  }
+  .sandbox-action .ico {
+    font-family: var(--serif-en);
+    font-style: italic;
+    color: var(--accent);
+    font-variation-settings: "opsz" 14, "SOFT" 80;
+  }
+  .audit-panel {
+    background: var(--surface);
+    border: 0.5px solid var(--border-2);
+    border-radius: 4px;
+    padding: 18px 22px;
+  }
+  .audit-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .audit-title {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--text-2);
+    letter-spacing: 0.06em;
+    font-variation-settings: "opsz" 14, "SOFT" 60;
+  }
+  .audit-count {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 11px;
+    color: var(--text-3);
+    font-variation-settings: "opsz" 12, "SOFT" 60;
+  }
+  .audit-log-entries {
+    font-size: 12px;
+    color: var(--text-2);
+    line-height: 1.85;
+    max-height: 280px;
+    overflow-y: auto;
+    font-feature-settings: "tnum" 1;
+  }
+  .audit-entry {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 14px;
+    padding: 4px 0;
+    border-bottom: 0.5px dashed var(--border);
+  }
+  .audit-entry:last-child { border-bottom: none; }
+  .audit-entry.alert .audit-action {
+    color: var(--accent-2);
+  }
+  .audit-entry.alert .audit-time {
+    color: var(--accent);
+  }
+  .audit-time {
+    font-family: var(--serif-en);
+    font-style: italic;
+    color: var(--text-3);
+    font-variation-settings: "opsz" 12, "SOFT" 60;
+  }
+  .audit-action { color: var(--text-2); }
+  .audit-empty {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 12.5px;
+    color: var(--text-3);
+    text-align: center;
+    padding: 16px 0;
+    font-variation-settings: "opsz" 14, "SOFT" 60;
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--surface-2);
+    border: 0.5px solid var(--accent-border);
+    border-left: 2px solid var(--accent);
+    padding: 12px 20px;
+    font-size: 13px;
+    color: var(--text);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    gap: 10px;
+  }
+  .toast.show {
+    display: flex;
+    animation: toastPop 0.25s ease-out;
+  }
+  @keyframes toastPop {
+    from { opacity: 0; transform: translate(-50%, 10px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+  }
+  .toast .ico {
+    font-family: var(--serif-en);
+    font-style: italic;
+    color: var(--accent);
+    font-size: 16px;
+    font-variation-settings: "opsz" 18, "SOFT" 100;
+  }
+
+  /* ============== C1: 系統架構 ============== */
+  .arch-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .arch-layer {
+    background: var(--surface);
+    border: 0.5px solid var(--border-2);
+    border-radius: 4px;
+    padding: 18px 24px;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    align-items: center;
+    gap: 22px;
+    text-align: left;
+    font: inherit;
+    color: var(--text);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .arch-layer:hover {
+    border-color: var(--border-3);
+    background: var(--surface-2);
+  }
+  .arch-layer.active {
+    border-color: var(--accent-border);
+    background: var(--surface-2);
+  }
+  .arch-layer.active::before {
+    content: '';
+    position: absolute;
+    left: -1px; top: -1px; bottom: -1px;
+    width: 2px;
+    background: var(--accent);
+  }
+  .arch-layer-num {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--accent);
+    font-variation-settings: "opsz" 72, "SOFT" 100;
+    letter-spacing: -0.02em;
+  }
+  .arch-layer-body { min-width: 0; }
+  .arch-layer-name {
+    font-family: var(--serif-tc);
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+  .arch-layer-sub {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--text-3);
+    font-variation-settings: "opsz" 14, "SOFT" 60;
+  }
+  .arch-layer-toggle {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 0.5px solid var(--border-2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-3);
+    font-size: 12px;
+    transition: all 0.3s ease;
+  }
+  .arch-layer.active .arch-layer-toggle {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: rotate(45deg);
+  }
+  .arch-detail {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 4px 4px 0;
+    padding: 20px 24px;
+    margin: -2px 0 8px 24px;
+    display: none;
+    animation: fadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .arch-detail.show { display: block; }
+  .arch-detail-title {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-variation-settings: "opsz" 12, "SOFT" 60;
+  }
+  .arch-detail-body {
+    font-size: 13.5px;
+    color: var(--text-2);
+    line-height: 1.8;
+  }
+  .arch-detail-body p { margin-bottom: 8px; }
+  .arch-detail-body strong { color: var(--text); font-weight: 500; }
+  .arch-detail-tech {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 0.5px solid var(--border);
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+
+  /* ============== C2: Pipeline ============== */
+  .pipeline-wrap {
+    margin-top: 20px;
+  }
+  .pipeline-strip {
+    display: flex;
+    gap: 0;
+    position: relative;
+    padding: 16px 0;
+    margin-bottom: 24px;
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    overflow-x: auto;
+  }
+  .pipe-step {
+    flex: 0 0 auto;
+    min-width: 110px;
+    text-align: center;
+    padding: 6px 12px;
+    cursor: pointer;
+    position: relative;
+    background: none;
+    border: none;
+    font: inherit;
+    color: var(--text-3);
+    transition: color 0.25s;
+  }
+  .pipe-step:hover { color: var(--text-2); }
+  .pipe-step.active { color: var(--accent); }
+  .pipe-step-num {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 13px;
+    margin-bottom: 4px;
+    display: block;
+    font-variation-settings: "opsz" 14, "SOFT" 100;
+  }
+  .pipe-step-name {
+    font-family: var(--serif-tc);
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .pipe-step::after {
+    content: '→';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-30%);
+    color: var(--text-4);
+    font-size: 12px;
+  }
+  .pipe-step:last-child::after { display: none; }
+  .pipe-step.active::before {
+    content: '';
+    position: absolute;
+    left: 50%; bottom: -17px;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: var(--accent);
+  }
+  .pipe-detail {
+    background: var(--surface);
+    border: 0.5px solid var(--border-2);
+    border-radius: 4px;
+    padding: 24px 26px;
+    min-height: 240px;
+  }
+  .pipe-detail-head {
+    display: flex; align-items: baseline; gap: 14px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .pipe-detail-num {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1;
+    font-variation-settings: "opsz" 72, "SOFT" 100;
+  }
+  .pipe-detail-title-wrap { flex: 1; }
+  .pipe-detail-title {
+    font-family: var(--serif-tc);
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+  .pipe-detail-sub {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--text-3);
+    font-variation-settings: "opsz" 14, "SOFT" 60;
+  }
+  .pipe-detail-body {
+    font-size: 13.5px;
+    color: var(--text-2);
+    line-height: 1.8;
+  }
+  .pipe-detail-body p { margin-bottom: 8px; }
+  .pipe-detail-body strong { color: var(--text); font-weight: 500; }
+  .pipe-detail-body ul {
+    padding-left: 18px;
+    margin: 6px 0;
+    list-style: none;
+  }
+  .pipe-detail-body ul li {
+    position: relative;
+    margin-bottom: 5px;
+  }
+  .pipe-detail-body ul li::before {
+    content: '·';
+    position: absolute;
+    left: -12px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .pipe-controls {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* ============== D1: RAG 是什麼 ============== */
+  .explainer-step {
+    padding: 32px 0;
+    border-bottom: 0.5px solid var(--border);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 32px;
+  }
+  .explainer-step:last-of-type { border-bottom: none; }
+  .explainer-num {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    letter-spacing: -0.04em;
+  }
+  .explainer-num .slash { color: var(--text-4); font-size: 0.7em; }
+  .explainer-body { min-width: 0; }
+  .explainer-step h2 {
+    font-family: var(--serif-tc);
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+  }
+  .explainer-step h2 em {
+    font-family: var(--serif-en);
+    font-style: italic;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144, "SOFT" 100;
+    padding: 0 0.06em;
+  }
+  .explainer-lead {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-2);
+    margin-bottom: 14px;
+    font-variation-settings: "opsz" 20, "SOFT" 60;
+  }
+  .explainer-text {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.85;
+  }
+  .explainer-text p { margin-bottom: 10px; }
+  .explainer-text strong { font-weight: 500; }
+  .explainer-illus {
+    margin: 18px 0;
+    padding: 22px;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 4px;
+  }
+  .illus-row {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 18px;
+    align-items: center;
+    padding: 10px 0;
+  }
+  .illus-row + .illus-row {
+    border-top: 0.5px dashed var(--border);
+  }
+  .illus-label {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--text-3);
+    font-variation-settings: "opsz" 14, "SOFT" 60;
+  }
+  .illus-content {
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.65;
+  }
+  .illus-content .bad { color: var(--warn-text); }
+  .illus-content .good { color: var(--success); }
+
+  /* ============== Diff: 對照 ============== */
+  .compare-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 12px;
+  }
+  .compare-row {
+    background: var(--surface);
+    border: 0.5px solid var(--border-2);
+    border-radius: 4px;
+    padding: 22px 24px;
+  }
+  .compare-row-head {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .compare-row-num {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--accent);
+    line-height: 1;
+    font-variation-settings: "opsz" 72, "SOFT" 100;
+    letter-spacing: -0.03em;
+  }
+  .compare-row-title-wrap { flex: 1; }
+  .compare-row-title {
+    font-family: var(--serif-tc);
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 2px;
+    letter-spacing: -0.005em;
+  }
+  .compare-row-sub {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 12.5px;
+    color: var(--text-3);
+    font-variation-settings: "opsz" 14, "SOFT" 60;
+  }
+  .compare-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .compare-col {
+    padding: 14px 16px;
+    border-radius: 3px;
+  }
+  .compare-col-general {
+    background: rgba(0,0,0,0.15);
+    border: 0.5px dashed var(--border-2);
+  }
+  .compare-col-ours {
+    background: var(--accent-bg);
+    border: 0.5px solid var(--accent-border);
+  }
+  .compare-col-label {
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-variation-settings: "opsz" 12, "SOFT" 60;
+  }
+  .compare-col-general .compare-col-label { color: var(--text-3); }
+  .compare-col-ours .compare-col-label { color: var(--accent); }
+  .compare-col-body {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .compare-col-general .compare-col-body { color: var(--text-2); }
+  .compare-link {
+    margin-top: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--serif-en);
+    font-style: italic;
+    font-size: 12.5px;
+    color: var(--text-2);
+    text-decoration: none;
+    padding: 4px 0;
+    transition: color 0.2s;
+    font-variation-settings: "opsz" 14, "SOFT" 60;
+  }
+  .compare-link:hover { color: var(--accent); }
+  .compare-link::after {
+    content: '→';
+    font-style: normal;
+    transition: transform 0.2s;
+  }
+  .compare-link:hover::after {
+    transform: translateX(2px);
+  }
+
+  /* ============== RWD ============== */
+  @media (max-width: 720px) {
+    .container { padding: 0 18px; }
+    .hero { padding: 48px 0 36px; }
+    .hero h1 { font-size: 28px; line-height: 1.35; }
+    .hero-sub { font-size: 15px; }
+    .hero-meta { grid-template-columns: 1fr; padding: 0; }
+    .hero-meta-item {
+      padding: 14px 0 !important;
+      border-right: none;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .hero-meta-item:last-child { border-bottom: none; }
+
+    .section-mark { grid-template-columns: auto 1fr; gap: 16px; }
+    .section-num { font-size: 36px; }
+    .section-name-wrap { display: none; }
+
+    .card-grid { grid-template-columns: 1fr; gap: 10px; }
+    .card { min-height: 0; padding: 20px 22px 18px; }
+    .card-num { font-size: 24px; }
+
+    .site-footer { grid-template-columns: 1fr; gap: 18px; }
+    .footer-meta { text-align: left; }
+
+    .demo-title { font-size: 26px; }
+    .demo-stage { padding: 18px 20px; }
+    .guided-fields { grid-template-columns: 1fr; }
+    .record-list li { grid-template-columns: 84px 1fr; gap: 10px; }
+    .sandbox-actions { grid-template-columns: 1fr; }
+    .arch-layer { grid-template-columns: 44px 1fr 28px; gap: 14px; padding: 14px 18px; }
+    .arch-layer-num { font-size: 18px; }
+    .arch-detail { margin-left: 0; }
+    .compare-cols { grid-template-columns: 1fr; }
+    .explainer-step { grid-template-columns: 50px 1fr; gap: 16px; padding: 24px 0; }
+    .explainer-num { font-size: 28px; }
+    .pipe-step { min-width: 90px; }
+    .illus-row { grid-template-columns: 80px 1fr; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container site-header-inner">
+    <div class="brand">
+      <span class="brand-glyph">∮</span>
+      <span class="brand-text"><em>Blood Foundation</em> · SOP Showcase</span>
+    </div>
+    <div class="site-meta">Issue 01 — May 2026</div>
+  </div>
+</header>
+
+<main>
+
+<!-- ==================== HOME ==================== -->
+<div id="page-home" class="page active">
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-eyebrow reveal" style="animation-delay: 0.05s">A Field Manual</div>
+      <h1 class="reveal" style="animation-delay: 0.18s">
+        讓 SOP、法規與作業知識,<br>
+        在地端被同仁<em>safely</em>地問出來。
+      </h1>
+      <p class="hero-sub reveal" style="animation-delay: 0.32s">
+        Eight scenarios and design choices for an internal RAG system —
+        from interaction to architecture, from <em>trust</em> to <em>auditability</em>.
+      </p>
+      <div class="hero-meta reveal" style="animation-delay: 0.46s">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">— deployment</div>
+          <div class="hero-meta-value">地端 Local LLM</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">— data sovereignty</div>
+          <div class="hero-meta-value">文件不離開機房</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">— audience</div>
+          <div class="hero-meta-value">業務 · 主管 · 資訊處</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="catalog-section reveal" style="animation-delay: 0.6s">
+    <div class="container">
+      <div class="section-mark">
+        <span class="section-num">i<span class="slash">/</span></span>
+        <span class="section-line"></span>
+        <div class="section-name-wrap">
+          <div class="section-name">業務情境</div>
+          <div class="section-sub">scenarios from the floor</div>
+        </div>
+      </div>
+      <div class="card-grid">
+        <a class="card" href="#/demo-1">
+          <div class="card-head">
+            <span class="card-num">01</span>
+            <span class="card-arrow">→</span>
+          </div>
+          <h3 class="card-title">現場捐血人員 SOP 引導</h3>
+          <p class="card-desc">使用者描述捐血者情境,系統識別、檢索、引導式提問,最後給出判定結果與處理紀錄。</p>
+          <div class="card-foot">
+            <span class="card-kicker">see: scenario logic</span>
+            <span class="card-tags"><span class="tag tag-accent">interactive</span></span>
+          </div>
+        </a>
+        <a class="card" href="#/demo-2">
+          <div class="card-head">
+            <span class="card-num">02</span>
+            <span class="card-arrow">→</span>
+          </div>
+          <h3 class="card-title">法規查詢</h3>
+          <p class="card-desc">跨多份法規的交叉檢索——個資法、醫療法、血液製劑條例、傳染病防治法的整合引用。</p>
+          <div class="card-foot">
+            <span class="card-kicker">see: cross-source citation</span>
+            <span class="card-tags"><span class="tag tag-accent">interactive</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="catalog-section reveal" style="animation-delay: 0.72s">
+    <div class="container">
+      <div class="section-mark">
+        <span class="section-num">ii<span class="slash">/</span></span>
+        <span class="section-line"></span>
+        <div class="section-name-wrap">
+          <div class="section-name">信任建立</div>
+          <div class="section-sub">on edges and guarantees</div>
+        </div>
+      </div>
+      <div class="card-grid">
+        <a class="card" href="#/b1">
+          <div class="card-head">
+            <span class="card-num">03</span>
+            <span class="card-arrow">→</span>
+          </div>
+          <h3 class="card-title">它什麼時候會說不知道</h3>
+          <p class="card-desc">範圍外問題不亂答。展示系統的邊界意識與誠實退讓——這是信任的基礎。</p>
+          <div class="card-foot">
+            <span class="card-kicker">on epistemic honesty</span>
+            <span class="card-tags"><span class="tag tag-accent">interactive</span></span>
+          </div>
+        </a>
+        <a class="card" href="#/b2">
+          <div class="card-head">
+            <span class="card-num">04</span>
+            <span class="card-arrow">→</span>
+          </div>
+          <h3 class="card-title">怎麼確保 SOP 不外流</h3>
+          <p class="card-desc">內容保護機制示範:複製攔截、浮水印、稽核日誌。SOP 留在系統內,不被截圖、不被外傳。</p>
+          <div class="card-foot">
+            <span class="card-kicker">on contained content</span>
+            <span class="card-tags"><span class="tag tag-accent">interactive</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="catalog-section reveal" style="animation-delay: 0.84s">
+    <div class="container">
+      <div class="section-mark">
+        <span class="section-num">iii<span class="slash">/</span></span>
+        <span class="section-line"></span>
+        <div class="section-name-wrap">
+          <div class="section-name">技術深度</div>
+          <div class="section-sub">choices, made deliberately</div>
+        </div>
+      </div>
+      <div class="card-grid">
+        <a class="card" href="#/c1">
+          <div class="card-head">
+            <span class="card-num">05</span>
+            <span class="card-arrow">→</span>
+          </div>
+          <h3 class="card-title">系統架構</h3>
+          <p class="card-desc">可互動的架構圖。移到不同元件看到各自說明,理解這套系統的分層設計。</p>
+          <div class="card-foot">
+            <span class="card-kicker">layered, by design</span>
+            <span class="card-tags"><span class="tag tag-accent">interactive</span></span>
+          </div>
+        </a>
+        <a class="card" href="#/c2">
+          <div class="card-head">
+            <span class="card-num">06</span>
+            <span class="card-arrow">→</span>
+          </div>
+          <h3 class="card-title">資料怎麼進來</h3>
+          <p class="card-desc">文件從上傳到入庫的完整流程動畫:OCR、切片、向量化、metadata 標註。</p>
+          <div class="card-foot">
+            <span class="card-kicker">ingestion, demystified</span>
+            <span class="card-tags"><span class="tag tag-accent">interactive</span></span>
+          </div>
+        </a>
+        <a class="card" href="#/d1">
+          <div class="card-head">
+            <span class="card-num">07</span>
+            <span class="card-arrow">→</span>
+          </div>
+          <h3 class="card-title">RAG 是什麼</h3>
+          <p class="card-desc">給非技術同仁的 RAG 互動式說明。5 分鐘理解這套技術的本質。</p>
+          <div class="card-foot">
+            <span class="card-kicker">a primer, in five minutes</span>
+            <span class="card-tags"><span class="tag tag-accent">interactive</span></span>
+          </div>
+        </a>
+        <a class="card" href="#/diff">
+          <div class="card-head">
+            <span class="card-num">08</span>
+            <span class="card-arrow">→</span>
+          </div>
+          <h3 class="card-title">我們和一般 RAG 的差別</h3>
+          <p class="card-desc">六項關鍵差異對照:文件處理、檢索策略、引用粒度、對話設計、範圍意識、部署模式。</p>
+          <div class="card-foot">
+            <span class="card-kicker">on six deliberate choices</span>
+            <span class="card-tags"><span class="tag tag-accent">comparison</span></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container" style="display: contents;">
+      <div class="footer-note">
+        A proposal showcase for Taiwan Blood Services Foundation. All conversations herein are scripted demonstrations; the deployed system runs on a <em>local LLM</em>, retrieves from a contained corpus, and never lets documents leave the room.
+      </div>
+      <div class="footer-meta">
+        Showcase v 0.3<br>
+        <strong>May 2026</strong>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ==================== DEMO 1 ==================== -->
+<div id="page-demo-1" class="page">
+  <div class="container">
+    <div class="demo-page">
+      <a class="back-link" href="#/">回到目錄</a>
+      <header class="demo-header">
+        <div class="demo-num">Demo i — Scenario engine</div>
+        <h1 class="demo-title">現場捐血人員 SOP 引導</h1>
+        <p class="demo-intro">
+          On any given day at a donation station, no two donors arrive with the same conditions.
+          <em>系統的工作不是給一份固定答案,而是陪同仁走完這次的判斷。</em>
+        </p>
+      </header>
+
+      <div class="demo-stage">
+        <div class="stage-bar">
+          <span>Scenario engine — demo mode</span>
+          <span class="stage-bar-status"><span class="stage-bar-dot"></span>ready</span>
+        </div>
+        <div id="demo1-content"></div>
+      </div>
+
+      <div class="demo-control">
+        <div class="demo-control-meta" id="demo1-meta">— choose a scenario to begin</div>
+        <button class="btn btn-secondary" onclick="demo1Reset()">重新開始</button>
+      </div>
+
+      <div class="demo-aside">
+        <div class="demo-aside-label">A note on craft</div>
+        <div class="demo-aside-title">為什麼這個比「翻 SOP」好</div>
+        <div class="demo-aside-body">
+          <p>傳統 SOP 文件寫得完整,但實際處置時同仁要自己判斷現在在哪個分支。系統把這件事翻過來——一次只問當下需要的條件,根據回答決定下一步。</p>
+          <p>每一步引用的章節與版本都會明確標示,既能讓新人快速上手,也方便事後稽核追溯。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DEMO 2 ==================== -->
+<div id="page-demo-2" class="page">
+  <div class="container">
+    <div class="demo-page">
+      <a class="back-link" href="#/">回到目錄</a>
+      <header class="demo-header">
+        <div class="demo-num">Demo ii — Cross-reference</div>
+        <h1 class="demo-title">法規查詢</h1>
+        <p class="demo-intro">
+          A legal question rarely sits in one place. It spans personal data law, medical practice statutes, public health regulations.
+          <em>本 demo 展示系統如何跨多份法規即時交叉檢索,並標註每一條的版本與修正日期。</em>
+        </p>
+      </header>
+
+      <div class="demo-stage">
+        <div class="stage-bar">
+          <span>Legal cross-reference — demo mode</span>
+          <span class="stage-bar-status"><span class="stage-bar-dot"></span>ready</span>
+        </div>
+        <div id="demo2-content"></div>
+      </div>
+
+      <div class="demo-control">
+        <div class="demo-control-meta" id="demo2-meta">— choose a question</div>
+        <button class="btn btn-secondary" onclick="demo2Reset()">重新開始</button>
+      </div>
+
+      <div class="demo-aside">
+        <div class="demo-aside-label">A note on craft</div>
+        <div class="demo-aside-title">為什麼要追溯到條文版本</div>
+        <div class="demo-aside-body">
+          <p>法規會修,實務作業也會跟著變。系統的每個回答都標註法規的最新修正日期與條文位置,使用者一眼就知道這個答案依據的是哪個版本。</p>
+          <p>這對品保、稽核、面對主管機關查驗時都是必要的——不是「AI 說的」,是「依據哪一條哪一版」。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== B1: 範圍外退讓 ==================== -->
+<div id="page-b1" class="page">
+  <div class="container">
+    <div class="demo-page">
+      <a class="back-link" href="#/">回到目錄</a>
+      <header class="demo-header">
+        <div class="demo-num">Demo iii — On knowing what one doesn't know</div>
+        <h1 class="demo-title">它什麼時候會說不知道</h1>
+        <p class="demo-intro">
+          A good system fails loudly when out of scope.
+          <em>對醫療場景特別重要——亂答可能造成真實的傷害。這個 demo 展示系統怎麼識別「我不該回答這個」,以及面對範圍外問題時的退讓設計。</em>
+        </p>
+      </header>
+
+      <div class="demo-stage">
+        <div class="stage-bar">
+          <span>Scope discipline — demo mode</span>
+          <span class="stage-bar-status"><span class="stage-bar-dot"></span>ready</span>
+        </div>
+        <div id="b1-content"></div>
+      </div>
+
+      <div class="demo-control">
+        <div class="demo-control-meta" id="b1-meta">— pick a question to see how it responds</div>
+        <button class="btn btn-secondary" onclick="b1Reset()">重新開始</button>
+      </div>
+
+      <div class="demo-aside">
+        <div class="demo-aside-label">A note on craft</div>
+        <div class="demo-aside-title">退讓不是缺陷,是設計</div>
+        <div class="demo-aside-body">
+          <p>一般 RAG 系統最大的危險不是不知道答案——是不知道自己不知道,然後編一個。對血液業務來說這比沒答案還可怕。</p>
+          <p>本系統的設計原則:沒有對應的知識庫片段就明確退讓,並建議使用者去哪裡找正確答案。Citations 永遠是真實的,範圍外問題的 citations 一定是空的——這個機制讓使用者可以信任「有引用就是有依據」。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== B2: 內容保護 ==================== -->
+<div id="page-b2" class="page">
+  <div class="container">
+    <div class="demo-page">
+      <a class="back-link" href="#/">回到目錄</a>
+      <header class="demo-header">
+        <div class="demo-num">Demo iv — On contained content</div>
+        <h1 class="demo-title">怎麼確保 SOP 不外流</h1>
+        <p class="demo-intro">
+          When the answer leaves the screen, where does it go?
+          <em>系統內看見的內容應該停留在系統內。下方是一段示範用的內部 SOP——試試看複製、右鍵、截圖,看保護機制怎麼觸發。每一次操作都會被記錄。</em>
+        </p>
+      </header>
+
+      <div class="sandbox">
+        <div class="sandbox-head">
+          <span>Internal SOP · for staff use only</span>
+          <span>Session · <span id="sandbox-session">demo-001</span></span>
+        </div>
+        <div class="sandbox-watermark" id="sandbox-watermark">demo · session</div>
+        <div class="sandbox-body" data-protected="true">
+          <div class="sandbox-doc-title">捐血者血管迷走神經反應處置 SOP</div>
+          <div class="sandbox-doc-meta">— internal document · v3.2 · updated 2024/11</div>
+          <div class="sandbox-doc-content">
+            <p><strong>觸發症狀:</strong>頭暈、噁心、面色蒼白、冷汗、心跳加速或減緩。</p>
+            <p><strong>即刻處置:</strong></p>
+            <ul>
+              <li>停止採血,保留針頭備用</li>
+              <li>協助捐血者平躺,雙腿抬高 15–30 度</li>
+              <li>鬆開頸部、腰部緊束衣物</li>
+              <li>密切觀察生命徵象,每 5 分鐘記錄一次</li>
+              <li>若意識清醒,可少量補充溫水或含糖飲料</li>
+            </ul>
+            <p><strong>持續性反應(超過 15 分鐘):</strong>通報醫師到場評估,必要時送醫或叫救護車。完整紀錄於良心回電系統,並追蹤捐血者後續狀況。</p>
+          </div>
+        </div>
+        <div class="sandbox-actions">
+          <button class="sandbox-action" onclick="b2TryCopy()"><span class="ico">⌘</span> 嘗試複製</button>
+          <button class="sandbox-action" onclick="b2TryContext()"><span class="ico">☰</span> 嘗試右鍵</button>
+          <button class="sandbox-action" onclick="b2TryScreenshot()"><span class="ico">⊡</span> 嘗試截圖</button>
+        </div>
+      </div>
+
+      <div class="audit-panel">
+        <div class="audit-head">
+          <span class="audit-title">— 稽核紀錄 / live audit log</span>
+          <span class="audit-count" id="audit-count">0 events</span>
+        </div>
+        <div class="audit-log-entries" id="audit-entries">
+          <div class="audit-empty">點上方按鈕觀察系統反應</div>
+        </div>
+      </div>
+
+      <div class="demo-aside">
+        <div class="demo-aside-label">A note on craft</div>
+        <div class="demo-aside-title">為什麼保護要做在三個層面</div>
+        <div class="demo-aside-body">
+          <p><strong>視覺浮水印</strong>確保截圖後仍能追溯到使用者與時段;<strong>互動攔截</strong>讓常見的「順手複製貼到 LINE」失效;<strong>稽核紀錄</strong>則讓所有異常操作可被事後追查。</p>
+          <p>實際部署版本還包含螢幕擷取偵測(macOS / iOS)、定期重新驗證 session、以及異常行為自動告警。這些都不是要「鎖死」使用者——而是讓「敏感內容外流」這件事變得有摩擦力、有紀錄、可追蹤。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== C1: 系統架構 ==================== -->
+<div id="page-c1" class="page">
+  <div class="container">
+    <div class="demo-page">
+      <a class="back-link" href="#/">回到目錄</a>
+      <header class="demo-header">
+        <div class="demo-num">Demo v — System architecture</div>
+        <h1 class="demo-title">系統架構</h1>
+        <p class="demo-intro">
+          Five layers, each with its own responsibility.
+          <em>從使用者介面到資料層,點開每一層看它做什麼、用什麼技術、為什麼這樣切分。</em>
+        </p>
+      </header>
+
+      <div class="arch-stack" id="arch-stack"></div>
+
+      <div class="demo-aside">
+        <div class="demo-aside-label">A note on craft</div>
+        <div class="demo-aside-title">為什麼要分這麼多層</div>
+        <div class="demo-aside-body">
+          <p>把職責切清楚,後續才能各自獨立替換——例如把雲端 LLM 換成地端模型,只動「生成層」;新增一份法規,只動「資料層」與「檢索層」的索引。每層之間靠明確的契約溝通,不互相耦合。</p>
+          <p>這也是為什麼 RAG 系統不是「接個 ChatGPT API」這麼簡單——每一層都有自己的設計取捨,加總起來才是一個能上線給同仁日常使用的系統。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== C2: 資料怎麼進來 ==================== -->
+<div id="page-c2" class="page">
+  <div class="container">
+    <div class="demo-page">
+      <a class="back-link" href="#/">回到目錄</a>
+      <header class="demo-header">
+        <div class="demo-num">Demo vi — Ingestion pipeline</div>
+        <h1 class="demo-title">資料怎麼進來</h1>
+        <p class="demo-intro">
+          A document doesn't just <em>land</em> in the knowledge base.
+          <em>從上傳到可被檢索,文件經過七個處理階段。點下方步驟看每一階段做什麼。</em>
+        </p>
+      </header>
+
+      <div class="pipeline-wrap">
+        <div class="pipeline-strip" id="pipe-strip"></div>
+        <div class="pipe-detail" id="pipe-detail"></div>
+        <div class="pipe-controls">
+          <span class="demo-control-meta" id="pipe-meta">— step 1 / 7</span>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-secondary" onclick="pipePrev()">← 上一步</button>
+            <button class="btn" onclick="pipeNext()">下一步 →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-aside">
+        <div class="demo-aside-label">A note on craft</div>
+        <div class="demo-aside-title">為什麼這部分最費工</div>
+        <div class="demo-aside-body">
+          <p>整個系統最容易低估的就是文件處理——「不就上傳嗎」。實際上,法規文件的條/項/款結構、SOP 的表格與流程圖、公文的欄位、版本日期⋯每一種都有自己的解析挑戰。</p>
+          <p>切片切得對不對,直接決定後面 RAG 的上限。切得太粗,語意稀釋;切得太細,失去上下文。這就是為什麼我們把 Stage 3 Splitter 規格寫成一份獨立的規格書。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== D1: RAG 是什麼 ==================== -->
+<div id="page-d1" class="page">
+  <div class="container">
+    <div class="demo-page">
+      <a class="back-link" href="#/">回到目錄</a>
+      <header class="demo-header">
+        <div class="demo-num">Demo vii — A primer</div>
+        <h1 class="demo-title">RAG 是什麼</h1>
+        <p class="demo-intro">
+          A short, jargon-free explanation for anyone in the room.
+          <em>不需要懂技術,五分鐘看完就理解這套系統的本質。</em>
+        </p>
+      </header>
+
+      <div class="explainer-step">
+        <div class="explainer-num">i<span class="slash">/</span></div>
+        <div class="explainer-body">
+          <h2>一般人想像中 AI 怎麼回答問題</h2>
+          <p class="explainer-lead">It's like asking <em>a brilliant generalist who's read everything once</em>.</p>
+          <div class="explainer-text">
+            <p>大型語言模型(ChatGPT、Claude)被訓練過大量網路資料,有點像找了一個讀過很多書的人。你問問題,他憑記憶回答。</p>
+            <p>但這個「記憶」是模糊的——它記得大概,記不得精確;它讀過公開資料,沒讀過你公司的內部文件。</p>
+          </div>
+          <div class="explainer-illus">
+            <div class="illus-row">
+              <span class="illus-label">你問</span>
+              <div class="illus-content">捐血者血色素的標準是?</div>
+            </div>
+            <div class="illus-row">
+              <span class="illus-label">它答</span>
+              <div class="illus-content"><span class="bad">「男性大概 13、女性大概 12」</span> — 接近但無法給出依據,也可能版本過時</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="explainer-step">
+        <div class="explainer-num">ii<span class="slash">/</span></div>
+        <div class="explainer-body">
+          <h2>這個方式的<em>問題</em></h2>
+          <p class="explainer-lead">It might be confident. It might be right. It can't show you where it got that.</p>
+          <div class="explainer-text">
+            <p>對閒聊或寫詩沒差,但對醫療業務這是<strong>致命缺陷</strong>:</p>
+            <ul style="padding-left: 18px; margin: 8px 0; list-style: none;">
+              <li style="margin-bottom: 4px;"><strong style="color: var(--warn-text);">·</strong> 沒辦法引用法規條文與版本</li>
+              <li style="margin-bottom: 4px;"><strong style="color: var(--warn-text);">·</strong> 不知道你血基會內部的 SOP</li>
+              <li style="margin-bottom: 4px;"><strong style="color: var(--warn-text);">·</strong> 可能「幻覺」——很有信心地答錯</li>
+              <li style="margin-bottom: 4px;"><strong style="color: var(--warn-text);">·</strong> 資料傳到 OpenAI / Anthropic,違反個資要求</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="explainer-step">
+        <div class="explainer-num">iii<span class="slash">/</span></div>
+        <div class="explainer-body">
+          <h2>RAG 的解法</h2>
+          <p class="explainer-lead">Instead of asking from memory — <em>look it up first, then answer</em>.</p>
+          <div class="explainer-text">
+            <p>RAG(Retrieval-Augmented Generation)的精神很簡單:<strong>先檢索,再回答</strong>。</p>
+            <p>像一個圖書館管理員,他不憑記憶回答你——他先找出相關書籍、翻到相關段落,然後對著書本告訴你答案。每句話都有依據,每個依據都可以翻回原書查證。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="explainer-step">
+        <div class="explainer-num">iv<span class="slash">/</span></div>
+        <div class="explainer-body">
+          <h2>RAG 的三步驟</h2>
+          <p class="explainer-lead">Three steps. Boringly simple, deeply effective.</p>
+          <div class="explainer-illus">
+            <div class="illus-row">
+              <span class="illus-label">1 · Retrieve</span>
+              <div class="illus-content">從文件庫中找出與問題最相關的幾段文字</div>
+            </div>
+            <div class="illus-row">
+              <span class="illus-label">2 · Augment</span>
+              <div class="illus-content">把這些片段塞給 LLM 當作回答時的依據</div>
+            </div>
+            <div class="illus-row">
+              <span class="illus-label">3 · Generate</span>
+              <div class="illus-content">LLM 根據這些片段組織出答案,並標註引用來源</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="explainer-step">
+        <div class="explainer-num">v<span class="slash">/</span></div>
+        <div class="explainer-body">
+          <h2>為什麼適合<em>血基會</em></h2>
+          <p class="explainer-lead">Because the corpus is specific, the answers must be auditable, and the data must stay inside.</p>
+          <div class="explainer-text">
+            <p>血基會的知識(SOP、捐血須知、健康標準、法規)有三個特性,正好對應 RAG 的優勢:</p>
+            <div class="explainer-illus" style="margin-top: 14px;">
+              <div class="illus-row">
+                <span class="illus-label">·</span>
+                <div class="illus-content"><strong>專屬內容</strong>——LLM 沒讀過你的內部 SOP,但 RAG 可以即時注入</div>
+              </div>
+              <div class="illus-row">
+                <span class="illus-label">·</span>
+                <div class="illus-content"><strong>須能追溯</strong>——每個答案都對應到具體條文/章節/版本</div>
+              </div>
+              <div class="illus-row">
+                <span class="illus-label">·</span>
+                <div class="illus-content"><strong>資料敏感</strong>——地端部署,文件不離開機房</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-aside">
+        <div class="demo-aside-label">In other words</div>
+        <div class="demo-aside-title">為什麼這個技術是現在的選擇</div>
+        <div class="demo-aside-body">
+          <p>RAG 不是新技術,但它在 2024–2025 年成熟到能上線給專業領域使用——主要是因為 Local LLM 變強了、檢索演算法變好了、向量資料庫變便宜了。三個條件同時到位,使得「資料不離開機房 + 引用可追溯 + 對話自然」第一次同時可能。</p>
+          <p>對血基會而言,現在剛好是切入點:技術已成熟,成本已下降,合規優勢明顯。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== Differentiation ==================== -->
+<div id="page-diff" class="page">
+  <div class="container">
+    <div class="demo-page">
+      <a class="back-link" href="#/">回到目錄</a>
+      <header class="demo-header">
+        <div class="demo-num">Showcase viii — Six deliberate choices</div>
+        <h1 class="demo-title">我們和一般 RAG 的差別</h1>
+        <p class="demo-intro">
+          "RAG" is a hot word; many companies say they do it. Here are six places where the work is.
+          <em>每一項都是一個具體設計選擇——一般做法 vs 我們做法的對照。前面 demo 看到的細節,在這裡收束成一個論述。</em>
+        </p>
+      </header>
+
+      <div class="compare-stack" id="diff-stack"></div>
+
+      <div class="demo-aside">
+        <div class="demo-aside-label">In closing</div>
+        <div class="demo-aside-title">這六項加起來才是「適合血基會的 RAG」</div>
+        <div class="demo-aside-body">
+          <p>每一項單獨看都不複雜,但 RAG 的價值來自<strong>六項都做對</strong>——只要有一項偷懶,整個系統的可靠度就會掉一個檔次。對醫療業務來說,系統的可靠度不是「夠用就好」,而是「不能出錯」。</p>
+          <p>這也是為什麼這套 spec 寫了 11 個 stages、超過 200 頁的設計文件——不是炫技,是把每個取捨講清楚,讓未來接手的人知道為什麼這樣設計。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+const ROUTES = {
+  '': 'page-home', '/': 'page-home',
+  '/demo-1': 'page-demo-1', '/demo-2': 'page-demo-2',
+  '/b1': 'page-b1', '/b2': 'page-b2',
+  '/c1': 'page-c1', '/c2': 'page-c2',
+  '/d1': 'page-d1', '/diff': 'page-diff',
+};
+function router() {
+  const hash = window.location.hash.replace(/^#/, '') || '/';
+  const tid = ROUTES[hash] || 'page-home';
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(tid).classList.add('active');
+  window.scrollTo(0, 0);
+  if (tid === 'page-demo-1') demo1Init();
+  if (tid === 'page-demo-2') demo2Init();
+  if (tid === 'page-b1') b1Init();
+  if (tid === 'page-b2') b2Init();
+  if (tid === 'page-c1') c1Init();
+  if (tid === 'page-c2') c2Init();
+  if (tid === 'page-diff') diffInit();
+}
+window.addEventListener('hashchange', router);
+window.addEventListener('DOMContentLoaded', router);
+
+const DEMO1_SCENARIOS = {
+  'A': {
+    title: '女性 48 公斤,2 週前從泰國回來',
+    userMsg: '有位捐血者剛來,女性、48 公斤,說 2 週前去過泰國曼谷,想捐血',
+    steps: [
+      { type: 'ai-intro', chips: ['捐血者健康標準', '捐血須知 v112', '疾管署流行區公告'],
+        content: '我來引導您完成評估。根據您提供的資訊,需要交叉檢視幾份文件。先從基本生理條件開始確認 ↓' },
+      { type: 'guided', title: '基本生理條件', step: 1, total: 4,
+        fields: [
+          { label: '年齡', value: '32' },
+          { label: '體重(已確認)', value: '48 kg', readonly: true },
+          { label: '血壓(mmHg)', value: '110 / 70' },
+          { label: '血色素(g/dL)', value: '12.5' },
+        ],
+        citation: '健康標準 §2', nextLabel: '提交基本條件' },
+      { type: 'ai', content: '<p><strong>基本條件符合 ✓</strong></p><ul><li>年齡 32 歲,在 17–65 範圍內</li><li>體重 48 kg ≥ 女性最低 45 kg → <strong>本次僅可捐 250ml</strong>(因體重 &lt; 60 kg)</li><li>血色素 12.5 g/dL ≥ 女性最低 12 g/dL</li><li>血壓正常範圍內</li></ul>' },
+      { type: 'guided', title: '出國史評估', step: 2, total: 4,
+        fields: [
+          { label: '離境泰國日期', value: '2 週前' },
+          { label: '停留地區', value: '曼谷市區' },
+          { label: '期間是否有發燒/紅疹', value: '無' },
+          { label: '是否為瘧疾感染危險區', value: '否' },
+        ],
+        citation: '捐血須知 §四、§五', nextLabel: '提交出國史' },
+      { type: 'verdict', kind: 'warn', title: '需暫緩捐血',
+        body: '泰國屬於<strong>登革熱流行區</strong>及<strong>茲卡病毒流行區</strong>。依離境日(2 週前)起算:<br>· 登革熱規定:離境後暫緩 28 天 → 還需等 <strong>14 天</strong><br>· 茲卡病毒規定:離境後暫緩 28 天 → 還需等 <strong>14 天</strong><br>· 曼谷市區非瘧疾感染危險區,瘧疾規定不適用' },
+      { type: 'record', title: 'Processing record · 處理紀錄',
+        rows: [
+          ['捐血者', '女性,32 歲,48 kg'],
+          ['生命徵象', '正常 (BP 110/70, Hb 12.5)'],
+          ['出國史', '泰國曼谷,2 週前返國,無症狀'],
+          ['判定結果', '暫緩捐血'],
+          ['可再捐日期', '今日起 14 天後'],
+          ['暫緩依據', '登革熱、茲卡流行區返國規定'],
+        ] },
+      { type: 'citations', items: [
+        { doc: '捐血須知 §五 登革熱', meta: 'v112-04 · 2023/04', snippet: '自國外登革熱流行地區離境日起,須暫緩捐血 28 天。' },
+        { doc: '捐血須知 §四 茲卡病毒', meta: 'v112-04 · 2023/04', snippet: '自茲卡病毒感染症流行區返國者,須暫緩捐血 28 天。' },
+        { doc: '疾管署流行區公告', meta: '更新 2026/04', snippet: '泰國列為登革熱及茲卡病毒流行區。' },
+      ] },
+      { type: 'follow-ups', items: [
+        { q: '捐血者下次能捐血的具體日期怎麼計算?', label: '可再捐日期怎麼算' },
+        { q: '如果捐血者期間有出現發燒會怎樣?', label: '若有發燒症狀的處理' },
+      ] },
+    ],
+  },
+  'B': {
+    title: '65 歲男性,首次捐血',
+    userMsg: '65 歲男性,身體健康,想第一次來捐血,該怎麼評估?',
+    steps: [
+      { type: 'ai-intro', chips: ['捐血者健康標準 §1', '捐血須知 §八 逾齡捐血'],
+        content: '逾 65 歲首次捐血屬於特殊情境,需要額外檢查與醫師同意。我引導您走完所有必要條件 ↓' },
+      { type: 'guided', title: '基本資格確認', step: 1, total: 3,
+        fields: [
+          { label: '年齡', value: '65 歲' },
+          { label: '是否健康良好', value: '是' },
+          { label: '已取得醫師同意', value: '是' },
+          { label: '是否於駐診時段', value: '是,週三 10–12' },
+        ],
+        citation: '健康標準 §2 一、(三)', nextLabel: '確認基本資格' },
+      { type: 'ai', content: '<p><strong>基本資格條件符合 ✓</strong></p><p>逾 65 歲首次捐血,需於醫師駐診時段、預約制至捐血室或捐血站完成。下一步進入體檢與 CBC 檢查。</p>' },
+      { type: 'guided', title: '體檢與血球計數 (CBC)', step: 2, total: 3,
+        fields: [
+          { label: '體重(kg)', value: '72' },
+          { label: '血壓', value: '128 / 78' },
+          { label: '血色素(g/dL)', value: '14.2' },
+          { label: 'CBC 結果', value: '全部正常' },
+        ],
+        citation: '捐血須知 §八 (二)', nextLabel: '提交檢查結果' },
+      { type: 'verdict', kind: 'success', title: '可以捐血',
+        body: '所有條件符合逾齡捐血規定。<br>· 本次可捐 <strong>250 ml</strong>(逾齡捐血一律 250 ml)<br>· 下次捐血間隔須至少 <strong>3 個月</strong><br>· 男性年捐血量上限 <strong>1,000 ml</strong>(逾齡規定較嚴)' },
+      { type: 'record', title: 'Processing record · 處理紀錄',
+        rows: [
+          ['捐血者', '男性,65 歲,72 kg,首次'],
+          ['醫師同意', '已取得'],
+          ['體檢與 CBC', '通過'],
+          ['判定結果', '可捐 250 ml'],
+          ['下次間隔', '至少 3 個月'],
+          ['年限制', '1,000 ml (含本次)'],
+        ] },
+      { type: 'citations', items: [
+        { doc: '捐血者健康標準 §2 一、(三)', meta: '衛署醫字 0950207650 · 2006/03', snippet: '逾六十五歲者,除應健康情況良好外,並應取得醫師之同意,始得捐血。' },
+        { doc: '捐血須知 §八 逾齡捐血', meta: 'v112-04 · 2023/04', snippet: '每次僅能捐 250ml,捐血間隔至少 3 個月,男性年捐血量以 1,000ml 為限。' },
+      ] },
+      { type: 'follow-ups', items: [
+        { q: '逾齡捐血者的 CBC 檢查多久要做一次?', label: 'CBC 檢查頻率' },
+        { q: '逾齡捐血者可以捐分離術嗎?', label: '逾齡可否捐分離術' },
+      ] },
+    ],
+  },
+  'C': {
+    title: '26 歲男性,3 個月前去英國旅遊 1 個月',
+    userMsg: '26 歲男性、72 公斤,3 個月前去英國旅遊 1 個月,可以捐嗎?',
+    steps: [
+      { type: 'ai-intro', chips: ['捐血者健康標準 §5', '捐血須知 §暫緩規定'],
+        content: '英國旅遊史涉及庫賈氏病(CJD)的限制條款。年代與停留時間是關鍵,我引導您逐項確認 ↓' },
+      { type: 'guided', title: '英國旅遊細節', step: 1, total: 3,
+        fields: [
+          { label: '旅遊年份', value: '2026 年' },
+          { label: '停留時間', value: '1 個月' },
+          { label: '是否在英國輸血', value: '否' },
+          { label: '家族二等親 CJD', value: '無' },
+        ],
+        citation: '健康標準 §5 八', nextLabel: '提交旅遊資訊' },
+      { type: 'ai', content: '<p><strong>CJD 相關限制不適用 ✓</strong></p><ul><li>永久不得捐血條款指 1980–1996 年間在英國居留超過 3 個月,本案不符合</li><li>停留 1 個月 &lt; 3 個月,且非該特殊年代</li><li>未在英國接受輸血,未有家族 CJD 史</li></ul>' },
+      { type: 'guided', title: '其他暫緩條件', step: 2, total: 3,
+        fields: [
+          { label: '4 週內活性減毒疫苗', value: '無' },
+          { label: '近期急性傳染病', value: '無' },
+          { label: '矯正機關/刺青/牙科', value: '皆無' },
+          { label: '基本生理條件', value: '符合' },
+        ],
+        citation: '健康標準 §4', nextLabel: '提交確認' },
+      { type: 'verdict', kind: 'success', title: '可以捐血',
+        body: '無 CJD 永久暫緩條款,無其他暫緩條件。<br>· 因體重 72 kg ≥ 60 kg,本次可捐 <strong>250 ml 或 500 ml</strong><br>· 男性年捐血量上限 <strong>1,500 ml</strong>' },
+      { type: 'record', title: 'Processing record · 處理紀錄',
+        rows: [
+          ['捐血者', '男性,26 歲,72 kg'],
+          ['英國旅遊', '2026 年,1 個月,未輸血'],
+          ['CJD 限制', '不適用'],
+          ['其他暫緩', '無'],
+          ['判定結果', '可捐 250–500 ml'],
+        ] },
+      { type: 'citations', items: [
+        { doc: '捐血者健康標準 §5 八', meta: '衛署醫字 0950207650 · 2006/03', snippet: '於民國 69 年至 85 年間曾在英國旅遊或居留時間合計超過 3 個月者,永不得捐血。' },
+        { doc: '捐血須知 §三 庫賈氏病', meta: 'v112-04 · 2023/04', snippet: '新型庫賈氏病與牛海綿狀腦病有高度相關,旅遊史限制與年代及停留時間相關。' },
+      ] },
+      { type: 'follow-ups', items: [
+        { q: '如果是 1990 年去英國 4 個月會怎樣?', label: '比較案例:1990 年情境' },
+        { q: '其他歐洲國家也有限制嗎?', label: '其他歐洲國家限制' },
+      ] },
+    ],
+  },
+};
+
+let demo1State = { scenarioKey: null, stepIndex: 0 };
+
+function demo1Init() { if (!demo1State.scenarioKey) demo1RenderPicker(); }
+function demo1Reset() { demo1State = { scenarioKey: null, stepIndex: 0 }; demo1RenderPicker(); document.getElementById('demo1-meta').textContent = '— choose a scenario to begin'; }
+
+function demo1RenderPicker() {
+  const html = `<div class="scenario-picker">
+    <div class="scenario-prompt">選擇一個捐血者情境,看系統怎麼引導你走完評估 →</div>
+    <div class="scenario-options">
+      ${Object.entries(DEMO1_SCENARIOS).map(([k, s], i) => `
+        <button class="scenario-option" onclick="demo1Start('${k}')">
+          <span class="scenario-option-num">0${i + 1}</span>
+          <span>${s.title}</span>
+          <span class="scenario-option-arrow">→</span>
+        </button>`).join('')}
+    </div>
+  </div>`;
+  document.getElementById('demo1-content').innerHTML = html;
+}
+
+function demo1Start(key) {
+  demo1State = { scenarioKey: key, stepIndex: 0 };
+  const s = DEMO1_SCENARIOS[key];
+  document.getElementById('demo1-content').innerHTML = '<div class="msg-stream" id="demo1-stream"></div>';
+  appendUserMsg('demo1-stream', s.userMsg);
+  setTimeout(() => demo1Advance(), 400);
+}
+
+function demo1Advance() {
+  const s = DEMO1_SCENARIOS[demo1State.scenarioKey];
+  if (demo1State.stepIndex >= s.steps.length) {
+    document.getElementById('demo1-meta').textContent = '— scenario complete';
+    return;
+  }
+  const step = s.steps[demo1State.stepIndex];
+  renderStep('demo1-stream', step, () => {
+    demo1State.stepIndex++;
+    document.getElementById('demo1-meta').textContent = `— step ${demo1State.stepIndex} / ${s.steps.length}`;
+    if (step.type !== 'follow-ups') {
+      setTimeout(() => demo1Advance(), step.type === 'guided' ? 400 : 700);
+    }
+  });
+}
+
+const DEMO2_QUESTIONS = {
+  'q1': {
+    label: '捐血者個資要保存多久?法律依據?',
+    userMsg: '捐血者個資要保存多久?法律依據是什麼?',
+    chips: ['個資法', '醫療法', '血液製劑條例'],
+    answer: `<p>依現行法規,捐血者個資保存分為三個層次:</p><ul><li><strong>基本醫療紀錄</strong> · 至少 7 年(醫療法 §70)</li><li><strong>輸血追溯資料</strong> · 至少 30 年(血液製劑條例相關規定)</li><li><strong>特殊通報案例</strong> · 永久保存(傳染病防治法)</li></ul><p>個人識別資料於目的消失後須去識別化或銷毀(個資法 §11)。</p>`,
+    citations: [
+      { doc: '醫療法 §70', meta: '最新修正 2020/01', snippet: '醫療機構之病歷,應指定適當場所及人員保管,並至少保存七年。' },
+      { doc: '個人資料保護法 §11', meta: '最新修正 2023/05', snippet: '特定目的消失或期限屆滿時,應主動或依當事人之請求,刪除、停止處理或利用該個人資料。' },
+      { doc: '血液製劑條例 §14', meta: '最新修正 2018/01', snippet: '捐血機構應建立捐血人資料及血液製劑追溯系統。' },
+    ],
+    followUps: [
+      { q: '輸血追溯資料具體要保存什麼?', label: '追溯資料的具體內容' },
+      { q: '銷毀流程的 SOP 是什麼?', label: '個資銷毀流程' },
+    ],
+  },
+  'q2': {
+    label: '隱瞞愛滋陽性捐血的法律後果?',
+    userMsg: '如果捐血者隱瞞自己是愛滋陽性還是捐血,會有什麼法律後果?',
+    chips: ['人類免疫缺乏病毒條例', '傳染病防治法'],
+    answer: `<p>依《人類免疫缺乏病毒傳染防治及感染者權益保障條例》§21:</p><p style="margin:8px 0;padding:11px 15px;background:var(--surface-2);border-left:2px solid var(--accent);font-size:13px;font-style:italic;font-family:var(--serif-en);">明知自己為感染者,而供血給他人使用,致傳染於人者,處 <strong style="font-style:normal;font-family:var(--sans-tc);">5 年以上 12 年以下有期徒刑</strong>。<strong style="font-style:normal;font-family:var(--sans-tc);">未遂犯亦罰之</strong>。</p><p>此外,凡檢驗發現傳染病或疑似傳染病時,血液基金會依《傳染病防治法》§39、§40 須通報衛生主管機關。</p>`,
+    citations: [
+      { doc: '人類免疫缺乏病毒條例 §21', meta: '最新修正 2021/01', snippet: '明知自己為感染者,而供血給他人使用,致傳染於人者,處五年以上十二年以下有期徒刑,未遂犯罰之。' },
+      { doc: '傳染病防治法 §39', meta: '最新修正 2023/06', snippet: '醫事人員發現傳染病或疑似傳染病時,應立即採行必要之感染管制措施,並報告衛生主管機關。' },
+      { doc: '捐血須知 §健康問卷四', meta: 'v112-04 · 2023/04', snippet: '若有隱瞞上列任一情事,致所捐血液使受血者感染愛滋病毒,本人願負民事損害賠償責任及相關刑事責任。' },
+    ],
+    followUps: [
+      { q: '受血者感染後可以求償嗎?', label: '受血者求償權' },
+      { q: '良心回電制度怎麼運作?', label: '良心回電機制' },
+    ],
+  },
+  'q3': {
+    label: '哪些檢驗結果會被通報主管機關?',
+    userMsg: '捐血檢驗中,哪些項目陽性會直接通報主管機關?',
+    chips: ['傳染病防治法', '人類免疫缺乏病毒條例', '捐血者健康標準'],
+    answer: `<p>依現行法規,以下情況須通報衛生主管機關:</p><ul><li><strong>HIV(愛滋病毒)</strong>陽性 · 直接通報,結果不通知捐血者本人</li><li><strong>B 型肝炎</strong>(HBsAg 陽性) · 列入永不得捐血,並依主管機關要求匯入資料庫</li><li><strong>C 型肝炎</strong>(Anti-HCV 陽性) · 同 B 肝</li><li><strong>梅毒、HTLV、其他法定傳染病</strong>陽性 · 依傳染病防治法 §39、§40 通報</li></ul><p>其餘檢驗結果會透過電子郵件 1 週內或紙本 2 週內通知捐血者本人。</p>`,
+    citations: [
+      { doc: '傳染病防治法 §39、§40', meta: '最新修正 2023/06', snippet: '凡檢驗發現傳染病或疑似傳染病時,將通報衛生主管機關。' },
+      { doc: '人類免疫缺乏病毒條例 §11、§13', meta: '最新修正 2021/01', snippet: '感染者之檢驗結果,主管機關得通知相關機構辦理追蹤管理。' },
+      { doc: '捐血須知 §九 檢驗報告', meta: 'v112-04 · 2023/04', snippet: '愛滋病毒檢驗結果不會通知您;如檢驗為陽性者,將直接通報衛生主管機關追蹤。' },
+    ],
+    followUps: [
+      { q: '通報後捐血者會收到什麼通知?', label: '通報後續流程' },
+      { q: 'B 肝陽性是永久不得捐血嗎?', label: 'B 肝陽性後續' },
+    ],
+  },
+  'q4': {
+    label: '體重 60 公斤以上能捐多少 ml?',
+    userMsg: '為什麼體重 60 公斤以上可以捐 500ml?法律依據在哪裡?',
+    chips: ['捐血者健康標準 §3', '血液製劑條例'],
+    answer: `<p>依《捐血者健康標準》§3 規定:</p><ul><li><strong>每次捐血以 250 毫升為原則</strong>,但體重 60 公斤以上者,每次捐血得為 500 毫升</li><li>本次捐 250ml 者,間隔 <strong>2 個月以上</strong></li><li>本次捐 500ml 者,間隔 <strong>3 個月以上</strong></li><li>男性年捐血量 <strong>≤ 1,500 ml</strong>,女性 <strong>≤ 1,000 ml</strong></li></ul><p>本標準依《血液製劑條例》§14 第二項規定訂定。</p>`,
+    citations: [
+      { doc: '捐血者健康標準 §3', meta: '衛署醫字 0950207650 · 2006/03', snippet: '每次捐血以 250 毫升為原則,但體重 60 公斤以上者,每次捐血得為 500 毫升。' },
+      { doc: '血液製劑條例 §14', meta: '最新修正 2018/01', snippet: '捐血者之健康條件,由中央主管機關定之。' },
+      { doc: '捐血須知 §七', meta: 'v112-04 · 2023/04', snippet: '本次捐血 250ml 者,下次捐血應間隔 2 個月以上;本次捐血 500ml 者,下次捐血應間隔 3 個月以上。' },
+    ],
+    followUps: [
+      { q: '為什麼以 60 公斤為門檻?', label: '60 公斤門檻的依據' },
+      { q: '逾齡捐血的捐血量限制?', label: '逾齡捐血量' },
+    ],
+  },
+};
+
+let demo2State = { questionsAsked: [] };
+
+function demo2Init() { if (demo2State.questionsAsked.length === 0) demo2RenderPicker(); }
+function demo2Reset() { demo2State = { questionsAsked: [] }; demo2RenderPicker(); document.getElementById('demo2-meta').textContent = '— choose a question'; }
+
+function demo2RenderPicker() {
+  const html = `<div class="scenario-picker">
+    <div class="scenario-prompt">選擇一個法規問題,看系統如何跨多份法規交叉檢索 →</div>
+    <div class="scenario-options">
+      ${Object.entries(DEMO2_QUESTIONS).map(([k, q], i) => `
+        <button class="scenario-option" onclick="demo2Ask('${k}')">
+          <span class="scenario-option-num">Q${i + 1}</span>
+          <span>${q.label}</span>
+          <span class="scenario-option-arrow">→</span>
+        </button>`).join('')}
+    </div>
+  </div>`;
+  document.getElementById('demo2-content').innerHTML = html;
+}
+
+function demo2Ask(key) {
+  const q = DEMO2_QUESTIONS[key];
+  if (demo2State.questionsAsked.length === 0) {
+    document.getElementById('demo2-content').innerHTML = '<div class="msg-stream" id="demo2-stream"></div>';
+  } else {
+    const more = document.getElementById('demo2-more-picker');
+    if (more) more.remove();
+  }
+  demo2State.questionsAsked.push(key);
+  document.getElementById('demo2-meta').textContent = `— ${demo2State.questionsAsked.length} question(s) explored`;
+
+  appendUserMsg('demo2-stream', q.userMsg);
+  setTimeout(() => {
+    appendAiMsg('demo2-stream', { chips: q.chips, content: q.answer });
+    setTimeout(() => {
+      appendCitations('demo2-stream', q.citations);
+      appendFollowUps('demo2-stream', q.followUps, (fq, label) => {
+        appendUserMsg('demo2-stream', fq);
+        setTimeout(() => {
+          appendAiMsg('demo2-stream', {
+            chips: ['捐血須知', '相關規定'],
+            content: `<p>關於「${label}」這個追問,本展示腳本涵蓋範圍有限。實際部署版本會即時檢索相關文件回答。</p><p style="color:var(--text-3);font-size:12px;margin-top:6px;font-style:italic;font-family:var(--serif-en);">— or pick another question below ↓</p>`,
+          });
+          setTimeout(() => demo2ShowMorePicker(), 400);
+        }, 500);
+      });
+      setTimeout(() => demo2ShowMorePicker(), 700);
+    }, 500);
+  }, 400);
+}
+
+function demo2ShowMorePicker() {
+  const stream = document.getElementById('demo2-stream');
+  if (!stream) return;
+  if (document.getElementById('demo2-more-picker')) return;
+  const remaining = Object.entries(DEMO2_QUESTIONS).filter(([k]) => !demo2State.questionsAsked.includes(k));
+  if (remaining.length === 0) return;
+  const div = document.createElement('div');
+  div.id = 'demo2-more-picker';
+  div.className = 'follow-ups';
+  div.innerHTML = `
+    <div class="follow-ups-label">— try another question</div>
+    ${remaining.map(([k, q]) => `
+      <button class="follow-up" onclick="document.getElementById('demo2-more-picker').remove(); demo2Ask('${k}');">
+        <span>${q.label}</span><span class="follow-up-arrow">→</span>
+      </button>`).join('')}`;
+  stream.appendChild(div);
+}
+
+function appendUserMsg(streamId, text) {
+  const s = document.getElementById(streamId);
+  const d = document.createElement('div');
+  d.className = 'msg msg-user';
+  d.innerHTML = '<div class="msg-user-bubble"></div>';
+  d.querySelector('.msg-user-bubble').textContent = text;
+  s.appendChild(d);
+  scrollIntoView(d);
+}
+
+function appendAiMsg(streamId, { chips, content }) {
+  const s = document.getElementById(streamId);
+  const d = document.createElement('div');
+  d.className = 'msg msg-ai';
+  let chipsHtml = '';
+  if (chips && chips.length) {
+    chipsHtml = '<div class="chips-bar">' + chips.map(c => `<span class="chip">${c}</span>`).join('') + '</div>';
+  }
+  d.innerHTML = `<div class="msg-ai-icon"></div><div class="msg-ai-body">${chipsHtml}${content}</div>`;
+  s.appendChild(d);
+  scrollIntoView(d);
+}
+
+function appendCitations(streamId, items) {
+  const s = document.getElementById(streamId);
+  const d = document.createElement('div');
+  d.className = 'msg msg-ai';
+  d.innerHTML = `<div class="msg-ai-icon" style="opacity:0;"></div><div class="msg-ai-body" style="margin-top:-8px;">
+    <div class="citations" onclick="this.classList.toggle('open')">
+      <div class="citations-head">
+        <span>§ ${items.length} sources cited</span>
+        <span class="toggle">▾</span>
+      </div>
+      <div class="citations-body">
+        ${items.map(c => `
+          <div class="cite-row">
+            <div class="cite-head">
+              <span class="cite-doc">${c.doc}</span>
+              <span class="cite-meta">${c.meta}</span>
+            </div>
+            ${c.snippet ? `<div class="cite-snippet">${c.snippet}</div>` : ''}
+          </div>`).join('')}
+      </div>
+    </div></div>`;
+  s.appendChild(d);
+}
+
+function appendFollowUps(streamId, items, onClick) {
+  if (!items || !items.length) return;
+  const s = document.getElementById(streamId);
+  const d = document.createElement('div');
+  d.className = 'msg msg-ai';
+  d.innerHTML = `<div class="msg-ai-icon" style="opacity:0;"></div><div class="msg-ai-body" style="margin-top:-8px;">
+    <div class="follow-ups">
+      <div class="follow-ups-label">— you might also ask</div>
+      ${items.map(f => `<button class="follow-up" data-q="${escAttr(f.q)}" data-label="${escAttr(f.label)}">
+        <span>${f.label}</span><span class="follow-up-arrow">→</span>
+      </button>`).join('')}
+    </div></div>`;
+  d.querySelectorAll('.follow-up').forEach(btn => {
+    btn.addEventListener('click', () => onClick(btn.dataset.q, btn.dataset.label));
+  });
+  s.appendChild(d);
+}
+
+function renderStep(streamId, step, onComplete) {
+  const s = document.getElementById(streamId);
+  if (step.type === 'ai-intro' || step.type === 'ai') {
+    appendAiMsg(streamId, { chips: step.chips, content: typeof step.content === 'string' ? (step.content.startsWith('<') ? step.content : `<p>${step.content}</p>`) : step.content });
+    onComplete();
+  } else if (step.type === 'guided') {
+    const d = document.createElement('div');
+    d.className = 'msg msg-ai';
+    d.innerHTML = `<div class="msg-ai-icon" style="opacity:0;"></div><div class="msg-ai-body" style="margin-top:-8px;">
+      <div class="guided-card">
+        <div class="guided-head">
+          <span class="guided-step-title">${step.title}</span>
+          <span class="guided-step-progress">step ${step.step} / ${step.total}</span>
+        </div>
+        <div class="progress-bar"><div class="progress-bar-fill" style="width:${(step.step / step.total) * 100}%"></div></div>
+        <div class="guided-fields">
+          ${step.fields.map(f => `
+            <div>
+              <div class="guided-field-label">${f.label}</div>
+              <div class="guided-field-value${f.readonly ? '' : ' editable'}">${f.value}</div>
+            </div>`).join('')}
+        </div>
+        <div class="guided-foot">
+          <span class="citation-inline">${step.citation}</span>
+          <button class="btn next-btn">${step.nextLabel || '下一步'}</button>
+        </div>
+      </div></div>`;
+    d.querySelector('.next-btn').addEventListener('click', () => {
+      const b = d.querySelector('.next-btn');
+      b.disabled = true; b.textContent = '已提交';
+      onComplete();
+    });
+    s.appendChild(d);
+    scrollIntoView(d);
+  } else if (step.type === 'verdict') {
+    const d = document.createElement('div');
+    d.className = 'msg msg-ai';
+    d.innerHTML = `<div class="msg-ai-icon" style="opacity:0;"></div><div class="msg-ai-body" style="margin-top:-8px;">
+      <div class="verdict ${step.kind === 'success' ? 'success' : ''}">
+        <div class="verdict-title">${step.kind === 'success' ? '✓' : '⚠'} ${step.title}</div>
+        <div class="verdict-body">${step.body}</div>
+      </div></div>`;
+    s.appendChild(d); scrollIntoView(d); onComplete();
+  } else if (step.type === 'record') {
+    const d = document.createElement('div');
+    d.className = 'msg msg-ai';
+    d.innerHTML = `<div class="msg-ai-icon" style="opacity:0;"></div><div class="msg-ai-body" style="margin-top:-8px;">
+      <div class="record-card">
+        <div class="record-title">${step.title}</div>
+        <ul class="record-list">${step.rows.map(([k, v]) => `<li><strong>${k}</strong><span>${v}</span></li>`).join('')}</ul>
+      </div></div>`;
+    s.appendChild(d); scrollIntoView(d); onComplete();
+  } else if (step.type === 'citations') {
+    appendCitations(streamId, step.items);
+    onComplete();
+  } else if (step.type === 'follow-ups') {
+    appendFollowUps(streamId, step.items, (q, label) => {
+      const stream = document.getElementById(streamId);
+      const d = document.createElement('div');
+      d.className = 'msg msg-ai';
+      d.innerHTML = `<div class="msg-ai-icon"></div><div class="msg-ai-body" style="color:var(--text-2);font-size:13px;">
+        <p>這條追問在本展示腳本之外。實際部署版本會即時檢索並回答。</p>
+        <p style="color:var(--text-3);margin-top:4px;font-family:var(--serif-en);font-style:italic;">— click "重新開始" above to try another scenario</p>
+      </div>`;
+      stream.appendChild(d); scrollIntoView(d);
+    });
+    onComplete();
+  }
+}
+
+function scrollIntoView(el) {
+  setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+}
+function escAttr(s) {
+  return String(s).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+//============= B1: 範圍外退讓 =============
+const B1_QUESTIONS = {
+  'in1': {
+    kind: 'in', label: '捐血者血色素的合格標準?',
+    userMsg: '捐血者血色素的合格標準是多少?',
+    chips: ['捐血者健康標準 §2'],
+    answer: `<p>依《捐血者健康標準》§2 規定:</p><ul><li><strong>男性</strong>:13 公克 % 以上</li><li><strong>女性</strong>:12 公克 % 以上</li></ul><p>此外捐分離術血漿者,首次與每半年加驗血漿總蛋白,需在 6 g/dl 以上。</p>`,
+    citations: [
+      { doc: '捐血者健康標準 §2 五-(一)', meta: '衛署醫字 0950207650 · 2006/03', snippet: '血紅素:男性 13 公克% 以上,女性 12 公克% 以上。' },
+    ],
+  },
+  'in2': {
+    kind: 'in', label: '泰國回國要等多久才能捐?',
+    userMsg: '從泰國回國要等多久才能捐血?',
+    chips: ['捐血須知 §四', '捐血須知 §五', '疾管署流行區公告'],
+    answer: `<p>泰國列為<strong>登革熱及茲卡病毒流行區</strong>,離境日起須暫緩捐血 <strong>28 天</strong>。</p><p>若在當地有出現發燒、紅疹等症狀,確診後須再延長:登革熱發病日起暫緩 42 天、茲卡感染痊癒後再暫緩 28 天。</p>`,
+    citations: [
+      { doc: '捐血須知 §五 登革熱', meta: 'v112-04 · 2023/04', snippet: '自國外登革熱流行地區離境日起,須暫緩捐血 28 天。' },
+      { doc: '捐血須知 §四 茲卡病毒', meta: 'v112-04 · 2023/04', snippet: '自茲卡病毒感染症流行區返國者,須暫緩捐血 28 天。' },
+    ],
+  },
+  'out1': {
+    kind: 'out', label: '員工請假規則?',
+    userMsg: '血基會員工請假規則是什麼?',
+    title: '此問題在知識庫範圍之外',
+    body: '我能回答的範圍是<strong>捐血業務相關</strong>的 SOP、法規與作業文件,例如:',
+    list: ['捐血者資格判定', 'SOP 標準作業流程', '血品檢驗與法規', '健康問卷與面談指引'],
+    redirect: '人事行政事項建議聯繫人事室,或查詢內部公告系統。',
+  },
+  'out2': {
+    kind: 'out', label: '幫我寫一首詩',
+    userMsg: '幫我寫一首關於捐血的詩',
+    title: '此問題不屬於本系統用途',
+    body: '本系統是為了協助同仁查詢業務知識與法規而設計,<strong>不是創意生成工具</strong>。',
+    list: ['SOP 與作業流程引導', '法規條文交叉查詢', '健康評估資格判定'],
+    redirect: '若您需要創意寫作協助,可使用一般通用 LLM 工具(注意不要輸入內部資料)。',
+  },
+  'out3': {
+    kind: 'out', label: '股票投資建議?',
+    userMsg: '可以給我一些股票投資的建議嗎?',
+    title: '此問題完全在範圍之外',
+    body: '本系統的知識庫<strong>不包含金融、投資、理財相關內容</strong>。即使是看似有道理的回答,也只會是憑空生成,沒有依據。',
+    list: ['捐血業務 SOP 引導', '法規與條文查詢', '健康評估'],
+    redirect: '投資相關問題請洽合格的財務顧問或金融機構。',
+  },
+};
+
+let b1State = { asked: [] };
+function b1Init() { if (b1State.asked.length === 0) b1RenderPicker(); }
+function b1Reset() { b1State = { asked: [] }; b1RenderPicker(); document.getElementById('b1-meta').textContent = '— pick a question to see how it responds'; }
+
+function b1RenderPicker() {
+  const html = `<div class="scenario-picker">
+    <div class="scenario-prompt">下方有 5 個問題,前 2 個在範圍內、後 3 個在範圍外。點下去看系統怎麼分辨。</div>
+    <div class="scenario-options">
+      ${Object.entries(B1_QUESTIONS).map(([k, q], i) => `
+        <button class="scenario-option" onclick="b1Ask('${k}')">
+          <span class="scenario-option-num">${q.kind === 'in' ? '✓' : '⊘'}</span>
+          <span>${q.label}</span>
+          <span class="scenario-option-arrow">→</span>
+        </button>`).join('')}
+    </div>
+  </div>`;
+  document.getElementById('b1-content').innerHTML = html;
+}
+
+function b1Ask(key) {
+  const q = B1_QUESTIONS[key];
+  if (b1State.asked.length === 0) {
+    document.getElementById('b1-content').innerHTML = '<div class="msg-stream" id="b1-stream"></div>';
+  } else {
+    const more = document.getElementById('b1-more');
+    if (more) more.remove();
+  }
+  b1State.asked.push(key);
+  document.getElementById('b1-meta').textContent = `— ${b1State.asked.length} question(s) explored`;
+
+  appendUserMsg('b1-stream', q.userMsg);
+  setTimeout(() => {
+    if (q.kind === 'in') {
+      appendAiMsg('b1-stream', { chips: q.chips, content: q.answer });
+      setTimeout(() => appendCitations('b1-stream', q.citations), 400);
+    } else {
+      const s = document.getElementById('b1-stream');
+      const d = document.createElement('div');
+      d.className = 'msg msg-ai';
+      d.innerHTML = `<div class="msg-ai-icon"></div><div class="msg-ai-body">
+        <div class="scope-result out">
+          <div class="scope-title">⊘ ${q.title}</div>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.7;">${q.body}</div>
+          <ul class="scope-list">${q.list.map(l => `<li>${l}</li>`).join('')}</ul>
+          <div style="font-size:13px;color:var(--text-2);line-height:1.7;margin-top:8px;">${q.redirect}</div>
+          <div class="scope-no-cite">no citations — by design</div>
+        </div>
+      </div>`;
+      s.appendChild(d);
+      scrollIntoView(d);
+    }
+    setTimeout(() => b1ShowMore(), 700);
+  }, 400);
+}
+
+function b1ShowMore() {
+  const stream = document.getElementById('b1-stream');
+  if (!stream || document.getElementById('b1-more')) return;
+  const remaining = Object.entries(B1_QUESTIONS).filter(([k]) => !b1State.asked.includes(k));
+  if (remaining.length === 0) return;
+  const div = document.createElement('div');
+  div.id = 'b1-more';
+  div.className = 'follow-ups';
+  div.innerHTML = `
+    <div class="follow-ups-label">— try another question</div>
+    ${remaining.map(([k, q]) => `
+      <button class="follow-up" onclick="document.getElementById('b1-more').remove(); b1Ask('${k}');">
+        <span>${q.kind === 'in' ? '✓ ' : '⊘ '}${q.label}</span><span class="follow-up-arrow">→</span>
+      </button>`).join('')}`;
+  stream.appendChild(div);
+}
+
+//============= B2: 內容保護 =============
+let b2State = { events: [], sessionId: null };
+
+function b2Init() {
+  if (!b2State.sessionId) {
+    b2State.sessionId = 'demo-' + Math.random().toString(36).substr(2, 6);
+    document.getElementById('sandbox-session').textContent = b2State.sessionId;
+    document.getElementById('sandbox-watermark').textContent = `${b2State.sessionId} · ${new Date().toLocaleString('zh-TW', {hour:'2-digit', minute:'2-digit'})}`;
+    document.addEventListener('copy', b2HandleCopy);
+    document.addEventListener('contextmenu', b2HandleContext);
+  }
+}
+
+function b2HandleCopy(e) {
+  if (!document.getElementById('page-b2').classList.contains('active')) return;
+  const sel = window.getSelection().toString();
+  const sandbox = document.querySelector('#page-b2 .sandbox-body');
+  if (sel && sandbox && sandbox.contains(window.getSelection().anchorNode)) {
+    e.preventDefault();
+    b2LogEvent('複製嘗試 — 已攔截', true);
+  }
+}
+function b2HandleContext(e) {
+  if (!document.getElementById('page-b2').classList.contains('active')) return;
+  const sandbox = document.querySelector('#page-b2 .sandbox');
+  if (sandbox && sandbox.contains(e.target)) {
+    e.preventDefault();
+    b2LogEvent('右鍵選單嘗試 — 已攔截', true);
+  }
+}
+
+function b2TryCopy() {
+  b2LogEvent('使用者點擊「嘗試複製」', true);
+  b2Toast('內容受保護,複製操作已記錄');
+}
+function b2TryContext() {
+  b2LogEvent('使用者點擊「嘗試右鍵」', true);
+  b2Toast('右鍵選單已停用');
+}
+function b2TryScreenshot() {
+  b2LogEvent('使用者點擊「嘗試截圖」(實際部署版本會偵測 macOS / iOS 截圖)', true);
+  b2Toast('截圖偵測機制將觸發 — 浮水印保留使用者識別');
+}
+
+function b2LogEvent(text, alert = false) {
+  const time = new Date().toLocaleTimeString('zh-TW', {hour12: false});
+  b2State.events.push({ time, text, alert });
+  const entries = document.getElementById('audit-entries');
+  if (b2State.events.length === 1) entries.innerHTML = '';
+  const div = document.createElement('div');
+  div.className = 'audit-entry' + (alert ? ' alert' : '');
+  div.innerHTML = `<span class="audit-time">${time}</span><span class="audit-action">${text}</span>`;
+  entries.appendChild(div);
+  entries.scrollTop = entries.scrollHeight;
+  document.getElementById('audit-count').textContent = `${b2State.events.length} event${b2State.events.length === 1 ? '' : 's'}`;
+}
+
+function b2Toast(msg) {
+  let toast = document.getElementById('b2-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'b2-toast';
+    toast.className = 'toast';
+    toast.innerHTML = `<span class="ico">!</span><span id="b2-toast-msg"></span>`;
+    document.body.appendChild(toast);
+  }
+  document.getElementById('b2-toast-msg').textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(b2State.toastTimer);
+  b2State.toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
+}
+
+//============= C1: 系統架構 =============
+const ARCH_LAYERS = [
+  { num: 'L5', name: '使用者介面層', sub: 'UI · access point',
+    body: '<p>同仁在桌機、手機、平板上看到的對話介面。包含<strong>內容保護機制</strong>(浮水印、複製攔截)、<strong>session 管理</strong>、語音輸入。</p><p>這一層的設計重點是「不增加同仁負擔」——介面要像聊天一樣自然,引導步驟要清晰,引用要在需要時才展開。</p>',
+    tech: ['React / Vue', 'WebSocket', 'PWA'] },
+  { num: 'L4', name: '應用層', sub: 'orchestration · audit',
+    body: '<p>把使用者意圖轉換成系統可處理的查詢。包含<strong>引導式對話引擎</strong>(知道何時該問下一個問題)、<strong>SOP 流程編排</strong>、<strong>稽核紀錄</strong>。</p><p>這層維護對話狀態,知道目前評估到哪一步、還缺什麼條件、什麼時候可以下判定。</p>',
+    tech: ['FastAPI', 'PostgreSQL', 'Redis (session)'] },
+  { num: 'L3', name: '檢索層', sub: 'hybrid search · re-rank',
+    body: '<p>把問題轉成向量,從文件庫找出最相關片段。包含<strong>Hybrid Search</strong>(向量 + BM25 關鍵字)、<strong>Re-ranker</strong> 二次排序、<strong>權限過濾</strong>(只回傳使用者有權看的內容)。</p><p>檢索品質直接決定 RAG 的上限——這層做得不好,後面 LLM 再強也答不對。</p>',
+    tech: ['Qdrant (Vector DB)', 'BGE-M3 (embedding)', 'BAAI/bge-reranker'] },
+  { num: 'L2', name: '生成層', sub: 'local LLM · citation',
+    body: '<p>用檢索到的片段組織回答。<strong>地端 Local LLM</strong>(Llama / Qwen / Taiwan Llama),不對外發送任何資料。<strong>Citation Builder</strong> 確保每句話都有來源、來源真實存在於檢索結果中。</p><p>這層被嚴格限制只能引用檢索到的文件,無對應片段時主動退讓。</p>',
+    tech: ['vLLM (推論)', 'Llama 3.1 / Qwen 2.5', 'JSON-strict prompt'] },
+  { num: 'L1', name: '資料層', sub: 'pipeline · storage',
+    body: '<p>所有文件的處理、儲存與索引。<strong>Ingestion Pipeline</strong>:OCR、解析、清理、切片、向量化(見 Demo 06)。<strong>三層儲存</strong>:PostgreSQL(metadata)、Qdrant(向量)、MinIO(原始檔案)。</p><p>所有資料留在血基會自己的機房,文件、向量、查詢紀錄都不離開。</p>',
+    tech: ['PostgreSQL', 'Qdrant', 'MinIO (S3-compatible)', 'BGE-M3'] },
+];
+
+function c1Init() {
+  const stack = document.getElementById('arch-stack');
+  if (stack.children.length > 0) return;
+  ARCH_LAYERS.forEach((layer, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'arch-layer';
+    btn.innerHTML = `
+      <span class="arch-layer-num">${layer.num}</span>
+      <div class="arch-layer-body">
+        <div class="arch-layer-name">${layer.name}</div>
+        <div class="arch-layer-sub">${layer.sub}</div>
+      </div>
+      <span class="arch-layer-toggle">+</span>`;
+    btn.onclick = () => c1Toggle(i);
+    stack.appendChild(btn);
+
+    const detail = document.createElement('div');
+    detail.className = 'arch-detail';
+    detail.id = `arch-detail-${i}`;
+    detail.innerHTML = `
+      <div class="arch-detail-title">— layer detail</div>
+      <div class="arch-detail-body">${layer.body}</div>
+      <div class="arch-detail-tech">
+        ${layer.tech.map(t => `<span class="chip">${t}</span>`).join('')}
+      </div>`;
+    stack.appendChild(detail);
+  });
+}
+
+function c1Toggle(i) {
+  const layers = document.querySelectorAll('.arch-layer');
+  const detail = document.getElementById(`arch-detail-${i}`);
+  const wasOpen = detail.classList.contains('show');
+  document.querySelectorAll('.arch-detail').forEach(d => d.classList.remove('show'));
+  layers.forEach(l => l.classList.remove('active'));
+  if (!wasOpen) {
+    detail.classList.add('show');
+    layers[i].classList.add('active');
+  }
+}
+
+//============= C2: Pipeline =============
+const PIPE_STEPS = [
+  { num: '01', name: '文件上傳', sub: 'parse + dedupe',
+    body: '<p>同仁(或 admin)上傳 PDF / docx / 圖片到系統。第一步先做<strong>檔案層判斷</strong>——格式、來源、版本、是否與既有文件重複。</p><p>每個文件被指派一個 doc_id 與 doc_type(法規/SOP/公文/手冊/一般文件),後續處理會依類別走不同路徑。</p>' },
+  { num: '02', name: 'Parser', sub: '解析格式 + 抓 metadata',
+    body: '<p>把 PDF / docx 結構解析出來。對於有層級結構的文件(法規條文、SOP 章節),保留<strong>章 / 節 / 條 / 項 / 款</strong>的層級資訊。</p><p>同時抽取 metadata:作者、版本號、發布日期、修訂日期、發文機關等。這些 metadata 在後續檢索與引用都關鍵。</p>' },
+  { num: '03', name: 'Cleaner', sub: '清理雜訊',
+    body: '<p>移除頁眉、頁尾、浮水印、印章 OCR 雜訊。對掃描件做 OCR(若 PDF 是圖檔)。處理跨頁表格(把斷開的表格重新接合)。</p><p>這一步做得不夠仔細,後面切片時噪音會被當成內容切進去,影響檢索品質。</p>' },
+  { num: '04', name: 'Splitter', sub: '依文件類型切片',
+    body: '<p>把清理過的文件切成 chunk。<strong>不是按字數平均切</strong>——而是依 doc_type 用不同策略:</p><ul><li>法規:按「條」切,保留條號</li><li>SOP:按步驟與表格切,表格絕不切碎</li><li>公文:主旨獨立、說明與辦法按點切</li></ul><p>每個 chunk 約 500 字,帶完整的章節階層 metadata。</p>' },
+  { num: '05', name: 'Embedder', sub: '向量化',
+    body: '<p>每個 chunk 經過 embedding 模型轉成 1024 維向量。使用 <strong>BGE-M3</strong>(多語、地端模型)。同時產生 sparse vector 給 BM25 做關鍵字檢索用。</p><p>這一步是 GPU 密集計算,單一 GPU 一小時可處理 ~10 萬個 chunks。</p>' },
+  { num: '06', name: 'Index', sub: '寫入向量庫 + metadata',
+    body: '<p>向量寫入 <strong>Qdrant</strong>(向量資料庫),metadata 寫入 <strong>PostgreSQL</strong>。兩者用 chunk_id 關聯。</p><p>同時建立倒排索引(BM25)、權限索引(誰能看哪些 chunks)、版本索引(同一條法規不同年份的修正)。</p>' },
+  { num: '07', name: '可檢索', sub: 'ready for queries',
+    body: '<p>文件就緒,可被同仁查詢。系統紀錄入庫時間、版本、權限範圍。</p><p>之後若文件更新(例如法規修正),整個 pipeline 重跑一次,新版本進入索引、舊版本被標記但不刪除——這樣歷史 citation 仍可追溯。</p>' },
+];
+
+let pipeState = { current: 0 };
+
+function c2Init() {
+  const strip = document.getElementById('pipe-strip');
+  if (strip.children.length > 0) return;
+  PIPE_STEPS.forEach((step, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'pipe-step' + (i === 0 ? ' active' : '');
+    btn.innerHTML = `<span class="pipe-step-num">${step.num}</span><span class="pipe-step-name">${step.name}</span>`;
+    btn.onclick = () => c2Goto(i);
+    strip.appendChild(btn);
+  });
+  c2Goto(0);
+}
+
+function c2Goto(i) {
+  if (i < 0 || i >= PIPE_STEPS.length) return;
+  pipeState.current = i;
+  document.querySelectorAll('.pipe-step').forEach((el, idx) => {
+    el.classList.toggle('active', idx === i);
+  });
+  const step = PIPE_STEPS[i];
+  document.getElementById('pipe-detail').innerHTML = `
+    <div class="pipe-detail-head">
+      <span class="pipe-detail-num">${step.num}</span>
+      <div class="pipe-detail-title-wrap">
+        <div class="pipe-detail-title">${step.name}</div>
+        <div class="pipe-detail-sub">— ${step.sub}</div>
+      </div>
+    </div>
+    <div class="pipe-detail-body">${step.body}</div>`;
+  document.getElementById('pipe-meta').textContent = `— step ${i + 1} / ${PIPE_STEPS.length}`;
+}
+
+function pipeNext() { c2Goto(Math.min(pipeState.current + 1, PIPE_STEPS.length - 1)); }
+function pipePrev() { c2Goto(Math.max(pipeState.current - 1, 0)); }
+
+//============= Diff: 對照 =============
+const DIFF_ROWS = [
+  { num: '01', title: '文件處理深度', sub: 'how documents become knowledge',
+    general: '整份文件丟進去,按固定字數(例如每 500 字)切片。不管文件結構、不管段落語意。',
+    ours: '依 doc_type 用不同策略——法規按條切、SOP 按步驟切、公文按欄位切。保留章 / 節 / 條 / 項 / 款的層級 metadata。',
+    link: '/c2', linkLabel: '看 Demo 06 完整 pipeline' },
+  { num: '02', title: '檢索策略', sub: 'how the right chunks get found',
+    general: '純向量檢索,挑 cosine similarity 最高的 K 個 chunks。對抽象問題還行,對精確關鍵字(「血色素 12」)常常會漏。',
+    ours: 'Hybrid Search:向量檢索 + BM25 關鍵字檢索,再經 Re-ranker 二次排序。依文件權威等級(法規 > SOP > 一般文件)加權。',
+    link: '/c1', linkLabel: '看檢索層架構' },
+  { num: '03', title: '引用粒度', sub: 'what a citation actually shows',
+    general: '回答完標個「來源:某 PDF」,使用者要自己翻 30 頁去找。',
+    ours: '文件 + 章 / 節 / 條 + 版本 + 發布日期 + 原文片段。Citation 是 LLM 必須遵守的結構,不是事後拼貼。',
+    link: '/demo-1', linkLabel: '看 Demo 01 的引用區塊' },
+  { num: '04', title: '對話設計', sub: 'one-shot vs. guided',
+    general: '一問一答。使用者必須會問完整的問題,否則答案不對。',
+    ours: '引導式對話。系統知道判斷需要哪些條件,主動逐步收集——每一步引用對應章節,讓新人也能像老手一樣執行 SOP。',
+    link: '/demo-1', linkLabel: '看 Demo 01 的引導流程' },
+  { num: '05', title: '範圍意識', sub: 'on knowing what one doesn\'t know',
+    general: '範圍外問題照樣編一個答案,有時還很有信心。對醫療業務是潛在風險。',
+    ours: '嚴格只引用知識庫片段。範圍外問題明確退讓 + 建議去哪問。Citations 永遠真實,退讓時是空的。',
+    link: '/b1', linkLabel: '看 Demo 03 範圍外退讓' },
+  { num: '06', title: '部署模式', sub: 'where the data lives',
+    general: '接 OpenAI / Anthropic API。每次查詢都把片段傳給雲端 LLM,內部資料離開機房。',
+    ours: 'Local LLM 地端部署(Llama 3.1 / Qwen 2.5)。文件、向量、查詢紀錄全部在血基會自己的機房內。',
+    link: '/c1', linkLabel: '看部署架構' },
+];
+
+function diffInit() {
+  const stack = document.getElementById('diff-stack');
+  if (stack.children.length > 0) return;
+  DIFF_ROWS.forEach(row => {
+    const div = document.createElement('div');
+    div.className = 'compare-row';
+    div.innerHTML = `
+      <div class="compare-row-head">
+        <span class="compare-row-num">${row.num}</span>
+        <div class="compare-row-title-wrap">
+          <div class="compare-row-title">${row.title}</div>
+          <div class="compare-row-sub">— ${row.sub}</div>
+        </div>
+      </div>
+      <div class="compare-cols">
+        <div class="compare-col compare-col-general">
+          <div class="compare-col-label">— 一般做法</div>
+          <div class="compare-col-body">${row.general}</div>
+        </div>
+        <div class="compare-col compare-col-ours">
+          <div class="compare-col-label">— 我們的做法</div>
+          <div class="compare-col-body">${row.ours}</div>
+        </div>
+      </div>
+      <a class="compare-link" href="#${row.link}">${row.linkLabel}</a>`;
+    stack.appendChild(div);
+  });
+}
+</script>
+</body>
+</html>
